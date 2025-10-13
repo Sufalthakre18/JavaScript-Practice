@@ -73,5 +73,60 @@ let address;
 console.log(address); // Output: undefined
 ```
 
----
+--------------------
+# 🔹 Primitive vs Non-Primitive — Copy vs Reference
 
+## 🧠 1. Primitive Data Types → Copy by Value
+Primitive types **store actual values** in memory.  
+When you assign one variable to another, it **creates a copy** of the value — not a reference.
+
+### ✅ Example (Copy by Value)
+```js
+let a = 10;
+let b = a; // b gets a COPY of a's value
+
+b = 20;
+
+console.log(a); // 10  -> original value not affected
+console.log(b); // 20  -> only copy changed 
+```
+
+## 2. Non-Primitive Data Types → Copy by Reference
+Non-primitive (objects, arrays, functions) store a reference (memory address), not the actual value.
+When you assign them, both variables point to the same memory location.
+
+``` let user1 = { name: "Jatin" };
+let user2 = user1; // user2 gets REFERENCE to same object
+
+user2.name = "Rahul";
+
+console.log(user1.name); // "Rahul"  -> changed for both!
+console.log(user2.name); // "Rahul" 
+```
+----------------------------------------
+
+* Q1. What is type coercion in JavaScript?
+
+Ans: Type coercion is the automatic or implicit conversion of values from one data type to another when performing operations or comparisons.
+
+* Q2. Difference between implicit and explicit coercion?
+
+Ans:
+Implicit: JavaScript automatically converts types (e.g., '5' - 2 → 3).
+
+Explicit: Developer manually converts (e.g., Number('5') → 5).
+
+* Q3. Difference between == and ===?
+
+Ans:
+
+== → checks value after coercion.
+
+=== → checks value + type, no coercion.
+
+Q4. What are falsy values in JavaScript?
+
+Ans:
+0, '', false, undefined, null, NaN are falsy — everything else is truthy.
+
+-------------------------------

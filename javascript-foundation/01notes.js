@@ -49,3 +49,16 @@
 // ***null → explicitly assigned to represent empty or no value.
 // ------------------------------------------------
 
+// let a= Number.MAX_SAFE_INTEGER
+// console.log(a);
+
+// let b= 9007199254740991n
+// let c= b+4n;
+// console.log(c);
+
+
+// console.log(typeof NaN);
+// console.log(!!null);  it show true nature of true and falsy
+
+// -----------------
+
