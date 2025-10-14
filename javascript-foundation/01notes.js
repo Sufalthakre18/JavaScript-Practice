@@ -97,4 +97,14 @@
 
 // console.log(num1 != num2) // compare values
 // console.log(num1 !== num2) // compare values or types false or true --> true
+// ---------------------
 
+// Q1)
+
+// function isInt(num) {
+//   return num % 1 === 0;
+// }
+
+// console.log(isInt(4)); // true
+// console.log(isInt(12.3)); // false
+// console.log(isInt(0.3)); // false"
