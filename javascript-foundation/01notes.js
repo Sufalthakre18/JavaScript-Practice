@@ -141,3 +141,49 @@
 
 // LOOPS 
 
+// for (let i = 5; i > 0; i--) {
+// console.log(i);
+// }
+
+// control flow
+// for (1; 2; 4){
+//     console.log(3);
+// }
+// ---------------
+
+// for (i=1; i<=10;i++) {
+//     console.log(i);
+    
+// }
+
+// let j=10;
+// while (j>0) {
+//     console.log(j);
+//     j--
+// }
+
+// ---------------
+// for(i=2;i<21;i++){
+//     if(i%2==0){
+//          console.log(i);
+//     }
+   
+    
+// }
+
+// i=1
+// while (i<16) {
+//     if (i%2===1) {
+//         console.log(i);    
+//     }
+    
+//     i++;
+// }
+
+
+// let sum=0
+// for(i=1; i<=10;i++){
+//     sum+=i  // sum= sum + i
+// }
+// console.log(sum);
+
