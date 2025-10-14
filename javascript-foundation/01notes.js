@@ -110,3 +110,34 @@
 // console.log(isInt(0.3)); // false"
 
 // NaN === NaN gives false
+
+// ----------------------------------------
+
+// control flow 
+// early return pattern
+
+// function getVal(val) {
+//     if (val<25) return 'A';
+//     else if (val<50) return 'B';
+//     else if (val<70) return 'C';
+//     else return 'D'
+// }
+// console.log(getVal(96));
+
+// rock paper scissor problem
+
+// function rps(user,comp) {
+//     if (user===comp) return 'draw'
+
+//     if (user==='rock' && comp==='scissor') return 'user';
+//     if (user==='scissor' && comp==='paper') return 'user';
+//     if (user==='paper' && comp==='rock') return 'user';
+
+//     return 'computer'
+// }
+
+// console.log(rps('paper', 'scissor'))
+ 
+
+// LOOPS 
+
