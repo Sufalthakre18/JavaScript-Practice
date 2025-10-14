@@ -901,3 +901,37 @@ outer: for (let i = 1; i <= 3; i++) {
 > Control flow helps JavaScript make decisions, repeat actions, and manage how code executes. Mastering `if`, `switch`, and loops is essential for writing clean and efficient logic.
 --------------------------------------
 
+# 🔹 JavaScript `forEach()` — Short & Important Notes
+
+## 🧠 Definition
+- `forEach()` is an **array method** used to **execute a function once for each element**.
+- It does **not return anything** (`undefined`).
+- Used for **side effects** like logging or modifying existing arrays.
+
+---
+
+## 🧩 Syntax
+```js
+array.forEach((element, index, array) => {
+  // code
+});
+
+``` let users = [
+  { name: "Jatin", age: 22 },
+  { name: "Rahul", age: 25 },
+  { name: "Simran", age: 20 }
+];
+
+users.forEach(user => {
+  console.log(`${user.name} is ${user.age} years old.`);
+});
+ ```
+
+- forEach() executes a function for each array element.
+- It does not return anything.
+- It cannot break early.
+- Use map() when you need a new array instead.
+- ❌ Cannot break or continue — runs for all elements.
+- ❌ Does not return new array (unlike map()).
+- ✅ Can modify the original array.
+- ✅ Works only on arrays, not on plain objects.
