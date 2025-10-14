@@ -693,13 +693,27 @@ switch (day) {
 
 ---
 
-## 🔁 2. Looping Statements (Iteration)
+# 🔁 JavaScript Loops — Complete Notes (Excluding `forEach()`)
 
-Loops allow you to **repeat code** multiple times until a condition is false.
+## 🧠 What Are Loops?
 
-### 🔸 `for` Loop
+Loops are used to **execute a block of code multiple times** until a specific condition becomes false. They make your code shorter, cleaner, and more efficient.
 
-Used when number of iterations is known.
+---
+
+## 🔹 1. `for` Loop
+
+Used when you **know beforehand** how many times you want to run the loop.
+
+### 🧩 Syntax
+
+```js
+for (initialization; condition; increment/decrement) {
+  // code to execute
+}
+```
+
+### ✅ Example
 
 ```js
 for (let i = 1; i <= 5; i++) {
@@ -707,19 +721,57 @@ for (let i = 1; i <= 5; i++) {
 }
 ```
 
-🧠 **Structure:**
+**Output:**
 
 ```
-for (initialization; condition; increment/decrement) {
-   // code block
+Count: 1
+Count: 2
+Count: 3
+Count: 4
+Count: 5
+```
+
+### 🧠 Breakdown
+
+1. **Initialization:** Runs once before loop starts. (e.g., `let i = 1`)
+2. **Condition:** Checked before each iteration. (loop stops if false)
+3. **Increment/Decrement:** Runs after each iteration. (e.g., `i++`)
+
+### ⚙️ Example (Reverse Loop)
+
+```js
+for (let i = 5; i > 0; i--) {
+  console.log(i);
 }
 ```
 
+**Output:** `5 4 3 2 1`
+
+### ⚠️ Infinite Loop Example
+
+```js
+for (;;) {
+  console.log("Infinite loop");
+}
+```
+
+Make sure to add a stopping condition.
+
 ---
 
-### 🔸 `while` Loop
+## 🔹 2. `while` Loop
 
-Used when number of iterations is **unknown**, and depends on a condition.
+Used when you **don’t know** how many times to run the loop — it keeps running while the condition is `true`.
+
+### 🧩 Syntax
+
+```js
+while (condition) {
+  // code to execute
+}
+```
+
+### ✅ Example
 
 ```js
 let i = 1;
@@ -729,13 +781,34 @@ while (i <= 5) {
 }
 ```
 
-🧠 **Note:** The loop checks the condition **before** executing the block.
+**Output:** `1 2 3 4 5`
+
+### ⚠️ Infinite Loop Example
+
+```js
+let i = 1;
+while (i > 0) {
+  console.log(i); // runs forever
+}
+```
+
+🧠 **Note:** Condition is checked **before** running the loop.
 
 ---
 
-### 🔸 `do...while` Loop
+## 🔹 3. `do...while` Loop
 
-Similar to `while`, but runs **at least once**, even if the condition is false.
+Runs the code **at least once**, even if the condition is false.
+
+### 🧩 Syntax
+
+```js
+do {
+  // code
+} while (condition);
+```
+
+### ✅ Example
 
 ```js
 let i = 6;
@@ -745,13 +818,25 @@ do {
 } while (i <= 5);
 ```
 
-🧠 Output → `6` (runs once before checking condition)
+**Output:** `6`
+
+🧠 Runs once before checking the condition.
 
 ---
 
-### 🔸 `for...of` Loop
+## 🔹 4. `for...of` Loop
 
-Used to iterate over **iterable objects** (arrays, strings, maps, etc.).
+Used to iterate over **iterable items** like arrays, strings, maps, or sets.
+
+### 🧩 Syntax
+
+```js
+for (let value of iterable) {
+  // code using value
+}
+```
+
+### ✅ Example
 
 ```js
 let fruits = ["apple", "banana", "mango"];
@@ -760,22 +845,48 @@ for (let fruit of fruits) {
 }
 ```
 
-🧠 **Output:** apple, banana, mango
+**Output:**
+
+```
+apple
+banana
+mango
+```
+
+### 🧠 Works on:
+
+* Arrays
+* Strings
+* Maps/Sets
+
+### ⚠️ Not for Objects
+
+`for...of` does **not** work on plain objects.
 
 ---
 
-### 🔸 `for...in` Loop
+## 🔹 5. `for...in` Loop
 
-Used to loop through **object properties**.
+Used to **iterate over object properties** (keys).
+
+### 🧩 Syntax
 
 ```js
-let user = { name: "Jatin", age: 22, city: "Delhi" };
-for (let key in user) {
-  console.log(key + ":", user[key]);
+for (let key in object) {
+  // code using key
 }
 ```
 
-🧠 **Output:**
+### ✅ Example
+
+```js
+let person = { name: "Jatin", age: 22, city: "Delhi" };
+for (let key in person) {
+  console.log(`${key}: ${person[key]}`);
+}
+```
+
+**Output:**
 
 ```
 name: Jatin
@@ -783,13 +894,17 @@ age: 22
 city: Delhi
 ```
 
+🧠 **Use Case:** Works best for **objects**, not arrays.
+
 ---
 
-## ⛔ 3. Control Flow Alteration
+## ⛔ Loop Control Statements
 
-### ✅ `break`
+Used to **alter normal loop flow**.
 
-Used to exit a loop or `switch` early.
+### 🔸 `break`
+
+Stops the loop completely.
 
 ```js
 for (let i = 1; i <= 5; i++) {
@@ -799,9 +914,9 @@ for (let i = 1; i <= 5; i++) {
 // Output: 1, 2
 ```
 
-### ✅ `continue`
+### 🔸 `continue`
 
-Skips current iteration and moves to the next.
+Skips the current iteration and moves to the next.
 
 ```js
 for (let i = 1; i <= 5; i++) {
@@ -811,48 +926,60 @@ for (let i = 1; i <= 5; i++) {
 // Output: 1, 2, 4, 5
 ```
 
-### ✅ `return`
-
-Exits a function immediately and optionally returns a value.
-
-```js
-function add(a, b) {
-  if (a < 0 || b < 0) {
-    return "Invalid Input";
-  }
-  return a + b;
-}
-console.log(add(2, 3)); // 5
-```
-
 ---
 
-## ⚡ 4. Advanced Concepts
-
-### 🧠 Nested Loops
+## 🧠 Nested Loops
 
 A loop inside another loop.
 
 ```js
-for (let i = 1; i <= 3; i++) {
-  for (let j = 1; j <= 2; j++) {
+for (let i = 1; i <= 2; i++) {
+  for (let j = 1; j <= 3; j++) {
     console.log(`i=${i}, j=${j}`);
   }
 }
 ```
 
-### 🧠 Labelled Statements
+**Output:**
 
-Used to control outer loops from inside inner loops.
-
-```js
-outer: for (let i = 1; i <= 3; i++) {
-  for (let j = 1; j <= 3; j++) {
-    if (j === 2) break outer;
-    console.log(i, j);
-  }
-}
 ```
+i=1, j=1
+i=1, j=2
+i=1, j=3
+i=2, j=1
+i=2, j=2
+i=2, j=3
+```
+
+---
+
+## 🧾 Summary Table
+
+| Loop Type    | Used For           | Condition Checked | Runs At Least Once | Works With      |
+| ------------ | ------------------ | ----------------- | ------------------ | --------------- |
+| `for`        | Known iterations   | Before loop       | ❌                  | Arrays, numbers |
+| `while`      | Unknown iterations | Before loop       | ❌                  | Any condition   |
+| `do...while` | Unknown iterations | After loop        | ✅                  | Any condition   |
+| `for...of`   | Iterables (values) | Each item         | ❌                  | Arrays, strings |
+| `for...in`   | Object properties  | Each key          | ❌                  | Objects         |
+
+---
+
+## 🎯 Interview Quick Notes
+
+* `for` → Best when you know the count.
+* `while` → Best when count depends on condition.
+* `do...while` → Always runs once.
+* `for...of` → Iterates over **values**.
+* `for...in` → Iterates over **keys/properties**.
+* Use `break` to stop loop early, `continue` to skip iteration.
+
+---
+
+## 🏁 Summary Line
+
+> JavaScript loops help run code repeatedly. Mastering `for`, `while`, `do...while`, `for...of`, and `for...in` gives full control over iteration and data handling.
+
 
 ---
 
