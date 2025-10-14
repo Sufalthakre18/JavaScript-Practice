@@ -108,3 +108,5 @@
 // console.log(isInt(4)); // true
 // console.log(isInt(12.3)); // false
 // console.log(isInt(0.3)); // false"
+
+// NaN === NaN gives false
