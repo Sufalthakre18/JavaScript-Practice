@@ -61,4 +61,40 @@
 // console.log(!!null);  it show true nature of true and falsy
 
 // -----------------
+// operators
+
+// ternary operator
+// ? :
+
+
+// 4>22 ? console.log("good"): console.log("bad");
+// instanceof is only use for reference value [] ,{}, function
+
+// let points=60;
+
+// let result = points>100? "gold":points>50? "silver":"bronze";
+// console.log(result);
+
+// -----------------
+
+// let x = 5;
+// console.log(x++); // prints 5
+// console.log(x);   // now x = 6
+
+// let y = 5;
+// console.log(++y); // prints 6
+// console.log(y);   // y = 6
+
+// let a = 5;
+// let b = a++;  // b = 5 (old value), a = 6
+// console.log(a, b); // 6, 5
+
+// let gg = 5;
+// console.log(gg++ + ++gg);
+
+// let num1 =87;
+// let num2="67";
+
+// console.log(num1 != num2) // compare values
+// console.log(num1 !== num2) // compare values or types false or true --> true
 
