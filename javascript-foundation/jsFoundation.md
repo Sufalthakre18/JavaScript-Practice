@@ -555,4 +555,349 @@ console.log(+'42'); // 42
 console.log(user?.address?.street); // undefined (no error)
 ```
 
-_____________________________________________________
+--------------------------------------------
+# CONTROL FLOW 
+
+
+## 🔹 What is Control Flow?
+
+Control flow in JavaScript defines **the order in which statements are executed** in a program.
+Normally, JavaScript executes code **from top to bottom**, **left to right**, but control flow statements let you **make decisions**, **repeat tasks**, and **control execution**.
+
+---
+
+## 🧩 1. Conditional Statements
+
+Used to perform **different actions based on conditions**.
+
+### ✅ `if` Statement
+
+Executes a block of code if the condition is `true`.
+
+```js
+let age = 18;
+if (age >= 18) {
+  console.log("You are an adult.");
+}
+```
+
+---
+
+### ✅ `if...else` Statement
+
+Executes one block if true, another if false.
+
+```js
+let age = 16;
+if (age >= 18) {
+  console.log("You can vote.");
+} else {
+  console.log("You are too young to vote.");
+}
+```
+
+🧠 **Explanation:**
+
+* `if` block executes only if the condition is `true`.
+* If not, the `else` block runs.
+
+---
+
+### ✅ `if...else if...else` Ladder
+
+Used when multiple conditions need checking.
+
+```js
+let marks = 85;
+if (marks >= 90) {
+  console.log("Grade A+");
+} else if (marks >= 75) {
+  console.log("Grade A");
+} else if (marks >= 50) {
+  console.log("Grade B");
+} else {
+  console.log("Fail");
+}
+```
+
+🧠 **Tip:** The first condition that evaluates to true is executed, then JS skips the rest.
+
+---
+
+### ✅ Ternary Operator (Short Form of `if...else`)
+
+One-line shorthand for simple conditions.
+
+```js
+let age = 20;
+let message = age >= 18 ? "Adult" : "Minor";
+console.log(message); // Adult
+```
+
+🧠 **Syntax:**
+
+```
+condition ? expression_if_true : expression_if_false
+```
+
+---
+
+### ✅ Nested `if` Statements
+
+`if` statements inside another `if`.
+
+```js
+let user = "admin";
+let password = "1234";
+
+if (user === "admin") {
+  if (password === "1234") {
+    console.log("Access Granted");
+  } else {
+    console.log("Incorrect Password");
+  }
+} else {
+  console.log("Invalid User");
+}
+```
+
+🧠 **Tip:** Avoid deep nesting by combining conditions with logical operators (&&, ||).
+
+---
+
+### ✅ `switch` Statement
+
+Used to compare one expression against multiple possible values.
+
+```js
+let day = 3;
+switch (day) {
+  case 1:
+    console.log("Monday");
+    break;
+  case 2:
+    console.log("Tuesday");
+    break;
+  case 3:
+    console.log("Wednesday");
+    break;
+  default:
+    console.log("Invalid Day");
+}
+```
+
+🧠 **Key Points:**
+
+* Use `break` to prevent fall-through (executing next cases).
+* `default` executes if no match is found.
+
+---
+
+## 🔁 2. Looping Statements (Iteration)
+
+Loops allow you to **repeat code** multiple times until a condition is false.
+
+### 🔸 `for` Loop
+
+Used when number of iterations is known.
+
+```js
+for (let i = 1; i <= 5; i++) {
+  console.log("Count:", i);
+}
+```
+
+🧠 **Structure:**
+
+```
+for (initialization; condition; increment/decrement) {
+   // code block
+}
+```
+
+---
+
+### 🔸 `while` Loop
+
+Used when number of iterations is **unknown**, and depends on a condition.
+
+```js
+let i = 1;
+while (i <= 5) {
+  console.log(i);
+  i++;
+}
+```
+
+🧠 **Note:** The loop checks the condition **before** executing the block.
+
+---
+
+### 🔸 `do...while` Loop
+
+Similar to `while`, but runs **at least once**, even if the condition is false.
+
+```js
+let i = 6;
+do {
+  console.log(i);
+  i++;
+} while (i <= 5);
+```
+
+🧠 Output → `6` (runs once before checking condition)
+
+---
+
+### 🔸 `for...of` Loop
+
+Used to iterate over **iterable objects** (arrays, strings, maps, etc.).
+
+```js
+let fruits = ["apple", "banana", "mango"];
+for (let fruit of fruits) {
+  console.log(fruit);
+}
+```
+
+🧠 **Output:** apple, banana, mango
+
+---
+
+### 🔸 `for...in` Loop
+
+Used to loop through **object properties**.
+
+```js
+let user = { name: "Jatin", age: 22, city: "Delhi" };
+for (let key in user) {
+  console.log(key + ":", user[key]);
+}
+```
+
+🧠 **Output:**
+
+```
+name: Jatin
+age: 22
+city: Delhi
+```
+
+---
+
+## ⛔ 3. Control Flow Alteration
+
+### ✅ `break`
+
+Used to exit a loop or `switch` early.
+
+```js
+for (let i = 1; i <= 5; i++) {
+  if (i === 3) break;
+  console.log(i);
+}
+// Output: 1, 2
+```
+
+### ✅ `continue`
+
+Skips current iteration and moves to the next.
+
+```js
+for (let i = 1; i <= 5; i++) {
+  if (i === 3) continue;
+  console.log(i);
+}
+// Output: 1, 2, 4, 5
+```
+
+### ✅ `return`
+
+Exits a function immediately and optionally returns a value.
+
+```js
+function add(a, b) {
+  if (a < 0 || b < 0) {
+    return "Invalid Input";
+  }
+  return a + b;
+}
+console.log(add(2, 3)); // 5
+```
+
+---
+
+## ⚡ 4. Advanced Concepts
+
+### 🧠 Nested Loops
+
+A loop inside another loop.
+
+```js
+for (let i = 1; i <= 3; i++) {
+  for (let j = 1; j <= 2; j++) {
+    console.log(`i=${i}, j=${j}`);
+  }
+}
+```
+
+### 🧠 Labelled Statements
+
+Used to control outer loops from inside inner loops.
+
+```js
+outer: for (let i = 1; i <= 3; i++) {
+  for (let j = 1; j <= 3; j++) {
+    if (j === 2) break outer;
+    console.log(i, j);
+  }
+}
+```
+
+---
+
+## 🧾 Summary Table
+
+| Type                | Statement                                            | Description             |
+| ------------------- | ---------------------------------------------------- | ----------------------- |
+| **Conditional**     | `if`, `else`, `switch`, ternary                      | Decide which block runs |
+| **Loops**           | `for`, `while`, `do...while`, `for...in`, `for...of` | Repeat blocks of code   |
+| **Jump Statements** | `break`, `continue`, `return`                        | Alter normal execution  |
+
+---
+
+## 🧠 Common Interview Questions
+
+### Q1. Difference between `==` and `===` in conditions?
+
+**Ans:** `==` compares values with coercion; `===` compares both value and type.
+
+### Q2. Difference between `while` and `do...while`?
+
+**Ans:** `while` checks before execution; `do...while` runs at least once.
+
+### Q3. When to use `switch` instead of `if...else`?
+
+**Ans:** When comparing **the same expression** with multiple possible values.
+
+### Q4. What is the difference between `for...of` and `for...in`?
+
+**Ans:**
+
+* `for...of` → iterates **values** (arrays, strings).
+* `for...in` → iterates **keys/properties** (objects).
+
+### Q5. What’s the use of `break` and `continue`?
+
+**Ans:**
+
+* `break` → exits loop/switch.
+* `continue` → skips current iteration.
+
+---
+
+## 🏁 Summary
+
+> Control flow helps JavaScript make decisions, repeat actions, and manage how code executes. Mastering `if`, `switch`, and loops is essential for writing clean and efficient logic.
+--------------------------------------
+
