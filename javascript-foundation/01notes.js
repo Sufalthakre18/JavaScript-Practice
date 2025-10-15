@@ -187,3 +187,41 @@
 // }
 // console.log(sum);
 
+// ------------------------------------
+
+// function start() {
+// let count =0;
+//   console.log(count);
+//   if (!count) count = 1;
+//   count++;
+//   console.log(count);
+// }
+// start();
+// console.log(typeof count);
+
+// ---------
+
+
+// function swap(n1,n2){
+//     [n1,n2]=[n2,n1]
+//     return `n1 is ${n1} and n2 is ${n2}`
+// }
+// console.log(swap(4,6))
+
+// let a = 5, b = 10;
+// a = a + b;
+// b = a - b;
+// a = a - b;
+// console.log(a, b);
+
+// function largest(n1,n2,n3) {
+//     let result = (n1>n2 && n1>n3)? console.log(n1+"is largest"): (n2>n3 )? console.log(n2+"is largest"): console.log(n3+'is largest');
+//     return result
+// }
+// largest(3,43,7)
+
+// let a=8,b=6,c=9;
+// let largest = a>b ?(a>c?a:c):(b>c?b:c);
+// console.log("largest : ", largest);
+
+
