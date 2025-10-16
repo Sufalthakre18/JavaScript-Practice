@@ -1044,4 +1044,316 @@ arr.includes(value);
 | Check array       | `Array.isArray()`                |
 
 ---
+# 🧱 JavaScript Objects 
+
+## 🧠 What is an Object?
+
+An **object** is a collection of **key-value pairs** used to store related data and functions.
+
+### ✅ Example
+
+```js
+let person = {
+  name: "Jatin",
+  age: 22,
+  isStudent: true,
+  greet: function() {
+    console.log("Hello, my name is " + this.name);
+  }
+};
+```
+
+* Keys are **strings or symbols**.
+* Values can be **any data type** (even functions — called methods).
+
+---
+
+## 🔹 Creating Objects
+
+```js
+// 1. Object literal ✅ (most common)
+let user = { name: "John", age: 25 };
+
+// 2. Using new Object()
+let user2 = new Object();
+user2.name = "Alice";
+
+// 3. Using a constructor function
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+}
+let p1 = new Person("Bob", 30);
+
+// 4. Using Object.create()
+let proto = { greet() { console.log("Hello!"); } };
+let obj = Object.create(proto);
+obj.name = "Jatin";
+```
+
+---
+
+## 🔸 Accessing Properties
+
+```js
+console.log(user.name); // dot notation
+console.log(user["age"]); // bracket notation
+```
+
+🧠 Use **bracket notation** when the key is dynamic or not a valid identifier.
+
+```js
+let key = "email";
+user[key] = "john@gmail.com";
+```
+
+---
+
+## 🔹 Adding / Modifying / Deleting
+
+```js
+let person = { name: "Jatin" };
+person.age = 22; // add
+person.name = "Rohan"; // modify
+delete person.age; // delete
+```
+
+---
+
+## 🔹 Object Methods
+
+| Method                          | Description                           | Example                         |
+| ------------------------------- | ------------------------------------- | ------------------------------- |
+| `Object.keys(obj)`              | Returns array of keys                 | `['name','age']`                |
+| `Object.values(obj)`            | Returns array of values               | `['Jatin',22]`                  |
+| `Object.entries(obj)`           | Returns key-value pairs               | `[['name','Jatin'],['age',22]]` |
+| `Object.assign(target, source)` | Copies properties                     | `Object.assign({}, obj)`        |
+| `Object.freeze(obj)`            | Prevents changes                      | locks object                    |
+| `Object.seal(obj)`              | Allows modify but not add/remove keys | semi-lock                       |
+| `Object.hasOwn(obj, key)`       | Checks if property exists             | true/false                      |
+
+---
+
+## 🔹 Looping through Objects
+
+```js
+let user = { name: "Jatin", age: 22 };
+for (let key in user) {
+  console.log(key, user[key]);
+}
+```
+
+🧠 `for...in` iterates **over enumerable keys**.
+
+---
+
+## 🔹 Copying Objects
+
+### 1️⃣ Shallow Copy
+
+```js
+let obj1 = { a: 1, b: 2 };
+let copy = { ...obj1 }; // or Object.assign({}, obj1)
+```
+
+### 2️⃣ Deep Copy
+
+```js
+let user = { name: "Jatin", address: { city: "Delhi" } };
+let deepCopy = JSON.parse(JSON.stringify(user));
+```
+
+🧠 Spread and assign create **shallow copies**, meaning nested objects are still references.
+
+---
+
+## 🔹 Destructuring Objects
+
+```js
+let person = { name: "Jatin", age: 22 };
+let { name, age } = person;
+console.log(name, age); // Jatin 22
+```
+
+### With renaming and default value:
+
+```js
+let { name: fullName, age = 18 } = person;
+```
+
+---
+
+## 🔹 Nested Objects
+
+```js
+let user = {
+  name: "Jatin",
+  address: {
+    city: "Delhi",
+    pin: 110001
+  }
+};
+console.log(user.address.city); // Delhi
+```
+
+---
+
+## 🔹 Optional Chaining
+
+```js
+console.log(user.address?.city); // avoids error if address undefined
+```
+
+---
+
+## 🔹 Merging Objects (Spread Operator)
+
+```js
+let obj1 = { a: 1, b: 2 };
+let obj2 = { b: 5, c: 10 };
+let merged = { ...obj1, ...obj2 };
+console.log(merged); // { a:1, b:5, c:10 }
+```
+
+🧠 Duplicate keys are **overwritten** by the latter object.
+
+---
+
+## 🔹 Checking Properties
+
+```js
+console.log('name' in user); // true
+console.log(user.hasOwnProperty('age')); // true
+```
+
+---
+
+## 🔹 Methods inside Objects
+
+```js
+let car = {
+  brand: "BMW",
+  start() {
+    console.log(this.brand + " started");
+  }
+};
+car.start(); // BMW started
+```
+
+🧠 `this` refers to the object the method belongs to.
+
+---
+
+## 🔹 Object References
+
+Objects are **stored by reference**, not by value.
+
+```js
+let a = { x: 10 };
+let b = a;
+b.x = 20;
+console.log(a.x); // 20
+```
+
+🧠 Copying just assigns the same reference, not a new object.
+
+---
+
+## 🔹 Object.freeze() vs Object.seal()
+
+| Method     | Add/Remove Props | Modify Existing | Example      |
+| ---------- | ---------------- | --------------- | ------------ |
+| `freeze()` | ❌                | ❌               | Fully locked |
+| `seal()`   | ❌                | ✅               | Semi-locked  |
+
+---
+
+## 🔹 Converting Objects
+
+```js
+let obj = { a: 1, b: 2 };
+let arr = Object.entries(obj); // [['a',1], ['b',2]]
+let newObj = Object.fromEntries(arr); // { a:1, b:2 }
+```
+
+---
+
+## 🔹 Optional Advanced Concepts
+
+### 🔸 Computed Property Names
+
+```js
+let key = "age";
+let user = {
+  name: "Jatin",
+  [key]: 22
+};
+```
+
+### 🔸 Object Destructuring with Nested Values
+
+```js
+let person = { name: "Jatin", address: { city: "Delhi" } };
+let { address: { city } } = person;
+console.log(city); // Delhi
+```
+
+### 🔸 Object Shorthand
+
+```js
+let name = "Jatin", age = 22;
+let user = { name, age }; // same as { name: name, age: age }
+```
+
+---
+
+## 🧾 Common Interview Questions
+
+### Q1: Difference between primitive and reference types?
+
+* Primitive → copied by **value**
+* Object → copied by **reference**
+
+### Q2: How to clone an object?
+
+```js
+let copy = { ...obj }; // shallow copy
+let deepCopy = JSON.parse(JSON.stringify(obj));
+```
+
+### Q3: Difference between `Object.freeze()` and `Object.seal()`?
+
+* `freeze()` → cannot modify or add/remove keys.
+* `seal()` → can modify, but cannot add/remove.
+
+### Q4: How to merge two objects?
+
+```js
+let merged = { ...obj1, ...obj2 };
+```
+
+### Q5: What is optional chaining?
+
+```js
+obj?.property // prevents runtime error if obj undefined
+```
+
+---
+
+## 🏁 Summary Table
+
+| Task                 | Method                                 |
+| -------------------- | -------------------------------------- |
+| Get keys             | `Object.keys(obj)`                     |
+| Get values           | `Object.values(obj)`                   |
+| Get entries          | `Object.entries(obj)`                  |
+| Merge                | `{ ...obj1, ...obj2 }`                 |
+| Clone                | `Object.assign({}, obj)`               |
+| Check prop           | `'key' in obj`, `obj.hasOwnProperty()` |
+| Freeze               | `Object.freeze(obj)`                   |
+| Seal                 | `Object.seal(obj)`                     |
+| Convert to array     | `Object.entries(obj)`                  |
+| From array to object | `Object.fromEntries(arr)`              |
+
+---
 
