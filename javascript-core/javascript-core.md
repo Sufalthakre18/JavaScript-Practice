@@ -682,7 +682,366 @@ for (let ch of str) {
 | Repeat           | `repeat()`                           |
 
 - IF WE COMPARE OBJ ANND OBJ IN JAVASCRIPT THEN IT WILL give FALSE
+
+- When merging objects with the spread operator, duplicate keys are resolved by overwriting the values with those from the second object.
+
+- the indexOf method gives -1 if the specified substring is not found in string
+
+- var is hoisted but let and const are not in same way
+
+- The rest parameter used in last in parameter if this is conjunction with other parameters in function
+
+- If a function with a rest parameter is called with no arguments, the rest parameter becomes an empty array.
+
 -----
 
 
+# 🧮 JavaScript Arrays 
+
+## 🧠 What is an Array?
+
+An **array** is a special type of object used to store **multiple values** in a single variable.
+
+### ✅ Example
+
+```js
+let fruits = ["apple", "banana", "mango"];
+console.log(fruits[0]); // apple
+```
+
+* Arrays are **zero-indexed** → first element is at index `0`.
+* Can store **different data types** in one array:
+
+```js
+let mixed = [1, "hello", true, null, [2, 3]];
+```
+
+---
+
+## 🔹 Creating Arrays
+
+```js
+let arr1 = [10, 20, 30]; // Literal syntax ✅ (preferred)
+let arr2 = new Array(10, 20, 30); // Constructor syntax ❌ (less used)
+let arr3 = new Array(3); // Creates empty array of length 3
+```
+
+---
+
+## 🔸 Array Properties
+
+| Property | Description                | Example              |
+| -------- | -------------------------- | -------------------- |
+| `length` | Returns number of elements | `[1,2,3].length` → 3 |
+
+```js
+let nums = [1,2,3,4];
+console.log(nums.length); // 4
+nums.length = 2;
+console.log(nums); // [1,2]
+```
+
+🧠 Changing `length` can **truncate** the array!
+
+---
+
+## 🔹 Accessing and Modifying Elements
+
+```js
+let colors = ["red", "green", "blue"];
+colors[1] = "yellow"; // modify
+console.log(colors[1]); // yellow
+console.log(colors[5]); // undefined (index not present)
+```
+
+---
+
+## 🔹 Basic Array Methods
+
+### 🔹 Adding / Removing Elements
+
+| Method      | Description           | Example          |
+| ----------- | --------------------- | ---------------- |
+| `push()`    | Add to **end**        | `arr.push(4)`    |
+| `pop()`     | Remove from **end**   | `arr.pop()`      |
+| `unshift()` | Add to **start**      | `arr.unshift(0)` |
+| `shift()`   | Remove from **start** | `arr.shift()`    |
+
+```js
+let nums = [1,2,3];
+nums.push(4); // [1,2,3,4]
+nums.pop(); // [1,2,3]
+nums.unshift(0); // [0,1,2,3]
+nums.shift(); // [1,2,3]
+```
+
+---
+
+## 🔹 Searching Elements
+
+```js
+let arr = [10, 20, 30, 20];
+
+console.log(arr.indexOf(20)); // 1
+console.log(arr.lastIndexOf(20)); // 3
+console.log(arr.includes(30)); // true
+```
+
+---
+
+## 🔹 Extracting / Joining / Combining
+
+```js
+let nums = [1,2,3,4,5];
+console.log(nums.slice(1,4)); // [2,3,4] (does NOT modify original)
+
+let part = nums.splice(1,2); // removes 2 elements starting index 1
+console.log(part); // [2,3]
+console.log(nums); // [1,4,5]
+
+let arr1 = [1,2];
+let arr2 = [3,4];
+let merged = arr1.concat(arr2);
+console.log(merged); // [1,2,3,4]
+```
+
+🧠 **Difference:**
+
+| Method     | Modifies Original? | Purpose            |
+| ---------- | ------------------ | ------------------ |
+| `slice()`  | ❌ No               | Extract portion    |
+| `splice()` | ✅ Yes              | Add/remove/replace |
+
+---
+
+## 🔹 Spread Operator (`...`)
+
+Used to **copy or merge** arrays.
+
+```js
+let a = [1,2];
+let b = [3,4];
+let c = [...a, ...b]; // [1,2,3,4]
+```
+
+```js
+let arr = [1,2,3];
+let copy = [...arr];
+copy.push(4);
+console.log(arr); // [1,2,3]
+console.log(copy); // [1,2,3,4]
+```
+
+🧠 Spread creates a **shallow copy** (nested arrays/objects still by reference).
+
+---
+
+## 🔹 Iterating over Arrays
+
+### 1️⃣ `for` Loop
+
+```js
+for (let i = 0; i < arr.length; i++) {
+  console.log(arr[i]);
+}
+```
+
+### 2️⃣ `for...of`
+
+```js
+for (let val of arr) {
+  console.log(val);
+}
+```
+
+### 3️⃣ `forEach()`
+
+```js
+arr.forEach((value, index) => {
+  console.log(index, value);
+});
+```
+
+🧠 `forEach` does **not return** a new array.
+
+---
+
+## 🔹 Transforming Arrays
+
+### 🔹 `map()`
+
+Creates a **new array** by applying a function to each element.
+
+```js
+let nums = [1,2,3];
+let doubled = nums.map(x => x * 2);
+console.log(doubled); // [2,4,6]
+```
+
+### 🔹 `filter()`
+
+Filters elements based on condition.
+
+```js
+let nums = [1,2,3,4];
+let even = nums.filter(x => x % 2 === 0);
+console.log(even); // [2,4]
+```
+
+### 🔹 `reduce()`
+
+Reduces array to a single value.
+
+```js
+let nums = [1,2,3,4];
+let sum = nums.reduce((acc, val) => acc + val, 0);
+console.log(sum); // 10
+```
+
+### 🔹 `find()` & `findIndex()`
+
+```js
+let nums = [5,10,15];
+console.log(nums.find(x => x > 7)); // 10
+console.log(nums.findIndex(x => x > 7)); // 1
+```
+
+### 🔹 `some()` & `every()`
+
+```js
+let nums = [2,4,6];
+console.log(nums.some(x => x > 5)); // true (at least one)
+console.log(nums.every(x => x > 1)); // true (all)
+```
+
+---
+
+## 🔹 Sorting and Reversing
+
+```js
+let nums = [4,1,3,2];
+nums.sort(); // [1,2,3,4] — works lexicographically (as strings)
+
+// For numeric sort:
+nums.sort((a,b) => a - b);
+
+nums.reverse(); // [4,3,2,1]
+```
+
+---
+
+## 🔹 Flattening Arrays
+
+```js
+let arr = [1, [2, 3], [4, [5]]];
+console.log(arr.flat()); // [1,2,3,4,[5]]
+console.log(arr.flat(2)); // [1,2,3,4,5]
+```
+
+---
+
+## 🔹 Converting Arrays
+
+```js
+let arr = [1,2,3];
+console.log(arr.join('-')); // '1-2-3'
+console.log(arr.toString()); // '1,2,3'
+```
+
+---
+
+## 🔹 Checking for Arrays
+
+```js
+Array.isArray([1,2,3]); // true
+Array.isArray('abc'); // false
+```
+
+---
+
+## 🧠 Advanced Concepts
+
+### 🔸 Shallow vs Deep Copy
+
+```js
+let a = [1, [2,3]];
+let b = [...a]; // shallow copy
+b[1][0] = 99;
+console.log(a); // [1, [99,3]]
+```
+
+✅ Use deep copy methods like `structuredClone()` or `JSON.parse(JSON.stringify())` if needed.
+
+### 🔸 Destructuring
+
+```js
+let [x, y, z] = [10, 20, 30];
+console.log(x, y, z); // 10 20 30
+```
+
+### 🔸 Rest Operator
+
+```js
+let [first, ...rest] = [1,2,3,4];
+console.log(first); // 1
+console.log(rest); // [2,3,4]
+```
+
+---
+
+## 🧾 Common Interview Questions
+
+### Q1: Difference between `forEach()` and `map()`?
+
+| Feature            | `forEach()`  | `map()`         |
+| ------------------ | ------------ | --------------- |
+| Returns new array? | ❌ No         | ✅ Yes           |
+| Used for           | side effects | transformations |
+
+### Q2: Difference between `slice()` and `splice()`?
+
+* `slice()` → **does not modify** the array.
+* `splice()` → **modifies** the array (can add/remove elements).
+
+### Q3: How to remove duplicates?
+
+```js
+let nums = [1,2,2,3,3];
+let unique = [...new Set(nums)];
+console.log(unique); // [1,2,3]
+```
+
+### Q4: Flatten a nested array?
+
+```js
+arr.flat(Infinity);
+```
+
+### Q5: How to check if an element exists?
+
+```js
+arr.includes(value);
+```
+
+---
+
+## 🏁 Summary Table
+
+| Task              | Method                           |
+| ----------------- | -------------------------------- |
+| Add/Remove end    | `push()`, `pop()`                |
+| Add/Remove start  | `unshift()`, `shift()`           |
+| Extract portion   | `slice()`                        |
+| Modify array      | `splice()`                       |
+| Combine arrays    | `concat()`, `...`                |
+| Search            | `indexOf()`, `includes()`        |
+| Iterate           | `forEach()`, `map()`, `for...of` |
+| Filter            | `filter()`                       |
+| Reduce            | `reduce()`                       |
+| Sort/Reverse      | `sort()`, `reverse()`            |
+| Flatten           | `flat()`                         |
+| Remove duplicates | `[...new Set(arr)]`              |
+| Check array       | `Array.isArray()`                |
+
+---
 
