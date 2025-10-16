@@ -224,4 +224,23 @@
 // let largest = a>b ?(a>c?a:c):(b>c?b:c);
 // console.log("largest : ", largest);
 
+// you can take input in two main ways depending on where your code runs:
+// 1st
+
+// const readline = require("readline").createInterface({
+//   input: process.stdin,
+//   output: process.stdout
+// });
+
+// readline.question("Enter your name: ", (name) => {
+//   console.log("Hello " + name);
+//   readline.close();
+// });
+
+// 2nd in browser using prompt()
+
+// let name = prompt("Enter your name:");
+// console.log("Hello " + name +" Jai shree Ram");
+
+
 
