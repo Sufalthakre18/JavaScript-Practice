@@ -453,4 +453,236 @@ console.log(gen.next().value); // 2
 
 ------------------------------------------
 
+# 🧵 JavaScript Strings 
+## 🧠 What is a String?
+
+A **string** is a sequence of characters used to represent text in JavaScript.
+
+### ✅ Example
+
+```js
+let name = "Jatin";
+let greeting = 'Hello';
+let sentence = `Hi, my name is ${name}.`; // Template literal
+```
+
+---
+
+## 🔹 String Declaration
+
+```js
+let str1 = "Double quotes";
+let str2 = 'Single quotes';
+let str3 = `Backticks`; // Template literals
+```
+
+🧠 **Template Literals** (ES6):
+
+* Allow **multiline strings**
+* Support **expression interpolation** using `${}`
+
+```js
+let a = 10, b = 20;
+console.log(`Sum: ${a + b}`); // Sum: 30
+```
+
+---
+
+## 🔸 String Properties
+
+| Property | Description                      | Example              |
+| -------- | -------------------------------- | -------------------- |
+| `length` | Returns the number of characters | `"hello".length` → 5 |
+
+---
+
+## 🔸 Common String Methods
+
+### 🔹 Case Conversion
+
+```js
+let str = "Hello";
+console.log(str.toUpperCase()); // "HELLO"
+console.log(str.toLowerCase()); // "hello"
+```
+
+---
+
+### 🔹 Searching and Checking
+
+```js
+let msg = "JavaScript is awesome";
+console.log(msg.includes("Script")); // true
+console.log(msg.startsWith("Java")); // true
+console.log(msg.endsWith("awesome")); // true
+console.log(msg.indexOf("is")); // 11
+console.log(msg.lastIndexOf("a")); // 3
+```
+
+---
+
+### 🔹 Extracting Parts
+
+```js
+let text = "JavaScript";
+console.log(text.slice(0, 4)); // "Java"
+console.log(text.substring(4, 10)); // "Script"
+console.log(text.substr(4, 6)); // "Script" (deprecated)
+```
+
+🧠 **Difference:**
+
+| Method        | Negative index | End index | Mutates original? |
+| ------------- | -------------- | --------- | ----------------- |
+| `slice()`     | ✅ yes          | exclusive | ❌                 |
+| `substring()` | ❌ no           | exclusive | ❌                 |
+| `substr()`    | ✅ yes          | length    | ❌                 |
+
+---
+
+### 🔹 Modifying Strings
+
+Strings are **immutable** — you can’t change characters directly.
+
+```js
+let name = "Jatin";
+name[0] = 'K'; // ❌ Doesn’t work
+name = "Katin"; // ✅ Reassign instead
+```
+
+---
+
+### 🔹 Concatenation
+
+```js
+let first = "Hello";
+let second = "World";
+console.log(first + " " + second); // Hello World
+console.log(`${first} ${second}`); // Hello World (template literal)
+```
+
+---
+
+### 🔹 Trimming and Padding
+
+```js
+let str = "   hello   ";
+console.log(str.trim()); // "hello"
+console.log(str.trimStart()); // "hello   "
+console.log(str.trimEnd()); // "   hello"
+
+let code = "5";
+console.log(code.padStart(3, '0')); // "005"
+console.log(code.padEnd(3, '0')); // "500"
+```
+
+---
+
+### 🔹 Replacing Text
+
+```js
+let text = "I love JavaScript";
+console.log(text.replace("JavaScript", "Python")); // I love Python
+console.log(text.replaceAll("o", "0")); // I l0ve JavaScript
+```
+
+🧠 Use **regex** for case-insensitive replace:
+
+```js
+text.replace(/javascript/i, "Python");
+```
+
+---
+
+### 🔹 Splitting and Joining
+
+```js
+let fruits = "apple,banana,grape";
+let arr = fruits.split(","); // ['apple', 'banana', 'grape']
+console.log(arr.join(" | ")); // apple | banana | grape
+```
+
+---
+
+### 🔹 Repeating Strings
+
+```js
+console.log("Hi ".repeat(3)); // Hi Hi Hi
+```
+
+---
+
+## 🔹 String Conversion
+
+```js
+let num = 123;
+console.log(String(num)); // '123'
+console.log(num.toString()); // '123'
+```
+
+---
+
+## 🔹 Escape Characters
+
+| Code | Meaning      | Example             |
+| ---- | ------------ | ------------------- |
+| `\'` | Single quote | `'It\'s fine'`      |
+| `\"` | Double quote | `"He said, \"Hi\""` |
+| `\\` | Backslash    | `'\\path'`          |
+| `\n` | New line     | `'Hello\nWorld'`    |
+| `\t` | Tab          | `'Hello\tWorld'`    |
+
+---
+
+## 🧠 Interview Questions
+
+### Q1: Are strings mutable in JavaScript?
+
+❌ No. Strings are immutable — once created, they cannot be changed.
+
+### Q2: Difference between `slice()` and `substring()`?
+
+* `slice()` allows negative indexes.
+* `substring()` swaps arguments if start > end.
+
+### Q3: How do you check if a string includes a substring?
+
+```js
+str.includes("text");
+```
+
+### Q4: How to reverse a string?
+
+```js
+let reversed = str.split("").reverse().join("");
+```
+
+### Q5: How to count characters (frequency)?
+
+```js
+let count = {};
+for (let ch of str) {
+  count[ch] = (count[ch] || 0) + 1;
+}
+```
+
+---
+
+## 🏁 Summary Table
+
+| Task             | Method                               |
+| ---------------- | ------------------------------------ |
+| Length of string | `str.length`                         |
+| Change case      | `toUpperCase()`, `toLowerCase()`     |
+| Extract part     | `slice()`, `substring()`             |
+| Search           | `includes()`, `indexOf()`            |
+| Replace          | `replace()`, `replaceAll()`          |
+| Trim spaces      | `trim()`, `trimStart()`, `trimEnd()` |
+| Split / Join     | `split()`, `join()`                  |
+| Repeat           | `repeat()`                           |
+
+- IF WE COMPARE OBJ ANND OBJ IN JAVASCRIPT THEN IT WILL give FALSE
+-----
+
+
 
