@@ -69,3 +69,12 @@
 // clousers return function through function but use parent function variable
 // higher order function return function
 
+// ---------------------------
+// ARRAYS
+
+// let fruits=["mango","apple"]
+
+// let newFruits=fruits.splice(1,0,"grapes","papaya")
+// console.log(fruits);
+
+
