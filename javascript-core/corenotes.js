@@ -77,4 +77,60 @@
 // let newFruits=fruits.splice(1,0,"grapes","papaya")
 // console.log(fruits);
 
+// ----------------------
 
+// let obj={
+//     name:"masoom sharma",
+//     age:34,
+//     address:{
+//         city:"haryana"
+//     }
+// }
+
+// let obj2={...obj}
+
+// console.log(obj);
+// console.log(obj2);
+
+// obj2.address.city="Jaipur"
+
+// console.log(obj);
+// console.log(obj2);
+
+// it is changing nested object also becasue if nested object present then it give reference of that object
+// SO WE USE DEEP CLONE
+
+// let newObj=JSON.parse(JSON.stringify(obj))
+// console.log(newObj);
+// newObj.address.city="jaipur"
+// console.log(obj);
+
+// ------------------
+// optional chainning
+
+let obj={
+    name:"masoom sharma",
+    age:34,
+    addresss:{
+        city:"haryana"
+    }
+}
+
+// console.log(obj.address.city)
+
+// so avoid error we use optional chainning ? 
+
+// console.log(obj?.address?.city) //undefined
+
+// ---------------
+let course={
+    title:"js",
+    duration:6384,
+}
+
+let cour=Object.entries(course)
+console.log(cour);
+Object.entries(course).forEach(function(val){
+    console.log(`${val[0]} -> ${val[1]}`);
+    
+})
