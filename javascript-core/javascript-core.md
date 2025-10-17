@@ -762,10 +762,13 @@ console.log(colors[5]); // undefined (index not present)
 
 | Method      | Description           | Example          |
 | ----------- | --------------------- | ---------------- |
-| `push()`    | Add to **end**        | `arr.push(4)`    | `returns lenght of the array`
-| `pop()`     | Remove from **end**   | `arr.pop()`      | `returns poped element of the array`
+| `push()`    | Add to **end**        | `arr.push(4)`    | 
+| `pop()`     | Remove from **end**   | `arr.pop()`      | ``
 | `unshift()` | Add to **start**      | `arr.unshift(0)` |
 | `shift()`   | Remove from **start** | `arr.shift()`    |
+
+- returns lenght of the array
+- returns poped element of the array
 
 ```js
 let nums = [1,2,3];
