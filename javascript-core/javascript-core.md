@@ -1046,6 +1046,42 @@ arr.includes(value);
 | Remove duplicates | `[...new Set(arr)]`              |
 | Check array       | `Array.isArray()`                |
 
+--
+#### Imporant points
+### JavaScript Function & Execution Concepts
+
+**1. Call Stack:**
+The call stack is a data structure that keeps track of the function being called in the current execution context. It facilitates the order of execution by maintaining a record of function calls and their return points.
+
+**2. Anonymous Functions:**
+Anonymous functions are functions without a name. They can be passed as arguments to other functions, making them useful in functional programming patterns like callbacks and event handlers.
+
+**3. IIFE (Immediately Invoked Function Expression):**
+IIFEs are functions that are executed immediately after their definition. They are commonly used to create a private scope, which helps prevent naming conflicts and provides data privacy.
+
+**4. Memory Leak from Unpopped Execution Contexts:**
+If a function's execution context is not popped off the call stack after it completes, it leads to a memory leak. This happens because the memory allocated for that context cannot be freed and reused.
+
+**5. Array Indexing in JavaScript:**
+In JavaScript, accessing an array with a negative index or an index greater than or equal to the array's length returns `undefined`.
+Example:
+
+```js
+let arr = ["mango", "orange", "apple"];
+console.log(arr[arr.length - 1]); // "apple"
+console.log(arr[-1]); // undefined
+console.log(arr.length); // 3
+```
+
+**6. Array Creation Differences:**
+
+```js
+arr = [23];          // Creates an array with one element: [23]
+arr = new Array(23); // Creates an array with length 23 (empty slots)
+```
+
+
+
 ---
 # 🧱 JavaScript Objects 
 
