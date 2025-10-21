@@ -242,5 +242,216 @@
 // let name = prompt("Enter your name:");
 // console.log("Hello " + name +" Jai shree Ram");
 
+// ---------------------
+
+// practice qs
+
+// console.log(`${45*2-10}`);
+
+// const date= new Date()
+// console.log(date);
+
+// let FirstName="sidhu"
+// let lastName="Moosewala"
+// lastName="legend"
+// console.log(FirstName+' '+lastName);
+
+
+// var a= "shikari";
+// console.log(a);
+// a="top de";
+
+// console.error("Baapu ne sikhai menu gal ek hi ");
+
+// console.log(12**(0.5));
+
+// let val=true
+// console.log(typeof val);
+
+// let age=2
+// if (age>=22) console.log("Yes you are man");
+// else console.log("You are kid");
+    
+// console.log(100/0);
+// ------------------------
+// const PI=3.14
+// console.log(PI);
+
+// let str= "jai shree ram";
+// slogan="Jai Shree Ram"
+// console.log(slogan);
+
+// console.log(typeof null);
+
+// var don=NaN;
+// console.log(typeof don);
+
+
+// const arr = [2,4,6,8,10]
+// arr=[1,2,3,45]
+// console.log(arr);
+
+// for (let i = 0; i <= 50; i++) {
+//     process.stdout.write(i + " ");
+// }
+
+
+// let sum=0;
+// let i=0;
+// while (i<=10){
+//     sum+=i;
+//     i=i+1
+// }
+// console.log(sum);
+
+// let lang="Javascript";
+// for (const element of lang) {
+//     console.log(element);
+    
+// }
+
+// for(let i=1;i<=20;i++){
+//     if(i%2==0) continue;
+//     console.log(i);
+// }
+
+// let i=5
+// do {
+//     console.log(i);
+//     i--;
+// } while (i>=1);
+
+// let fact=1;
+// for(let i=5;i>=1;i--){
+//     fact*=i
+//     console.log(i);
+    
+// }
+// console.log("factorial of 5 is ",fact);
+
+// let grid=""
+// for(let i=0;i<3;i++){
+//     for(let i=0;i<3;i++){
+        
+//         grid+=i + " "
+        
+//     }
+//     grid+='\n'
+// }
+// console.log(grid);
+
+
+// let hold=1;
+// for(let i=1;i<=3;i++){
+//     let str=''
+//     for (let j=1;j<=3;j++) {
+//         str+=hold + ' '
+//         hold++
+//     }
+//     console.log(str);
+    
+// }
+
+
+// let hold1 = 1;
+// for (let row = 1; row <= 3; row++) {
+//   console.log(`${hold1++} ${hold1++} ${hold1++}`);
+// }
+
+
+// const arr=[1,2,3,5,6,7]
+// const newarr=[]
+// for(let i=0;i<arr.length;i++){
+//    newarr.push(arr[arr.length-1-i])
+// }
+// console.log(newarr);
+
+
+// const newarr = [...arr].reverse();
+// console.log(newarr);
+
+// let i=1
+// while (i<=100) {
+//     if (i%5===0){
+//         console.log(i);
+//     }
+//     i++;
+// }
+
+
+// const Obj={name:"janni",age:50,profession:"singing"}
+// for (const key in Obj) {
+//     console.log(key+' :- '+Obj[key]);
+    
+    
+// }
+
+// let arr=[1,2,3,4,5,6,7]
+// for(let i=0;i<Math.floor(arr.length/2);i++){
+//     let temp=arr[i]
+//     arr[i]=arr[arr.length-1-i]
+//     arr[arr.length-1-i]=temp
+// }
+// console.log(arr);
+
+
+// const Ratings=[5,4,3,2,1]
+// const newRat=[10,20,30,40,50]
+
+// Ratings.unshift(6,7)
+// Ratings.pop()
+// let el=Ratings.slice(0,3)
+// console.log(el);
+// console.log(Ratings.indexOf(4));
+// console.log(Ratings.includes(3));
+// console.log(Ratings.concat(newRat));
+// console.log(Ratings.sort());
+
+
+// bubble sort
+
+// const Ratings=[5,4,3,2,1]
+// for(let j=0;j<Ratings.length-1;j++){
+//     for(let i=0;i<Ratings.length-j-1;i++){
+//         if (Ratings[i]>Ratings[i+1]) {
+//             let Temp=Ratings[i]
+//             Ratings[i]=Ratings[i+1]
+//             Ratings[i+1]=Temp
+//         }
+//     }
+// }
+
+// console.log(Ratings);
+
+// ----------------
+
+// Internshala coding practice 
+
+// let arr= [1,2,[33,44,[555,666], 77],8 ]
+
+// let num=arr[2][2][0]
+// console.log(num);
+
+
+// let a = "Samarth Vohra      "
+// let b = "Samarth Vohra"
+
+// console.log(a.trim().toUpperCase());
+
+
+// var a = 10;
+// function abc(){
+//     console.log(a)
+//     var a = 200;
+// }
+// abc()
+
+let num=1
+do {
+    console.log(num);
+    
+    num++
+} while (num<=100);
+
 
 
