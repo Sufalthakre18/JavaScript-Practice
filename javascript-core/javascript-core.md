@@ -1376,7 +1376,7 @@ let merged = { ...obj1, ...obj2 };
 ```js
 obj?.property // prevents runtime error if obj undefined
 ```
-
+* The map method doubles each number, and then sort is called on the resulting array without a custom comparison function, which sorts the elements as strings in ascending order based on their UTF-16 code unit values.
 ---
 
 ## 🏁 Summary Table

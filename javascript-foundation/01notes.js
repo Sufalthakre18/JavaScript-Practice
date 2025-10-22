@@ -446,12 +446,87 @@
 // }
 // abc()
 
-let num=1
-do {
-    console.log(num);
+// let num=1
+// do {
+//     console.log(num);
     
-    num++
-} while (num<=100);
+//     num++
+// } while (num<=100);
+
+// console.log(typeof NaN);
+
+// function CheckNum(num) {
+//     if (num%2===1) return "this is odd Number"
+//     return "Even number"
+// }
+// console.log(CheckNum(9));
+
+// function areaOfCir(radius) {
+//     return `The area of Circle is ${(Math.PI*radius*radius).toFixed(4)}`
+    
+// }
+
+// console.log(areaOfCir(4));
+
+// function Sum(arr){
+//     return arr.reduce((acc,curr)=>{
+//         acc= acc+ curr
+//         return acc
+//     },0)
+// }
+// console.log(Sum([1,2,3,4,5]));
 
 
+// function Checker(str,char){
+//     return str.toLowerCase().startsWith(char.toLowerCase())
+// }
 
+// console.log(Checker("Jai shree ram","K"));
+
+// function fact(num) {
+//     return num<1 ? 1 :num * fact(num-1)
+// }
+// console.log(fact(5));
+
+// function fact(num){
+//     if (num<1)return 1
+//     let fac=1
+//     for(let i=1;i<=num;i++){
+//         fac*=i
+//     }
+//     return fac
+// }
+// console.log(fact(5))
+
+
+// function Reverse(str) {
+//     result=''
+//     for(i=0;i<str.length;i++){
+//         result+=str[str.length-1-i]
+//     }
+//     return result
+// }
+// console.log(Reverse('jamanapar'));
+
+// function Reverse(str) {
+//     return str.split('').reverse().join('')
+// }
+// console.log(Reverse('jamanapar'));
+
+// function largest(arr){
+//     let newarr=arr.sort((a,b)=>{ return a-b}).reverse()
+//     return newarr[0]
+// }
+// console.log(largest([1,2,38,5,36,75,93]));
+
+
+// function largest(arr) {
+//     let max=arr[0]
+//     for(let i=1;i<arr.length;i++){
+//         if (arr[i]>max) {
+//             max=arr[i]
+//         }
+//     }
+//     return max
+// }
+// console.log(largest([1,2,38,5,36,75,93]));
