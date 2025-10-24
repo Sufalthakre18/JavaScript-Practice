@@ -108,13 +108,13 @@
 // ------------------
 // optional chainning
 
-let obj={
-    name:"masoom sharma",
-    age:34,
-    addresss:{
-        city:"haryana"
-    }
-}
+// let obj={
+//     name:"masoom sharma",
+//     age:34,
+//     addresss:{
+//         city:"haryana"
+//     }
+// }
 
 // console.log(obj.address.city)
 
@@ -123,47 +123,119 @@ let obj={
 // console.log(obj?.address?.city) //undefined
 
 // ---------------
-let course={
-    title:"js",
-    duration:6384,
-}
+// let course={
+//     title:"js",
+//     duration:6384,
+// }
 
-let cour=Object.entries(course)
-console.log(cour);
-Object.entries(course).forEach(function(val){
-    console.log(`${val[0]} -> ${val[1]}`);
+// let cour=Object.entries(course)
+// console.log(cour);
+// Object.entries(course).forEach(function(val){
+//     console.log(`${val[0]} -> ${val[1]}`);
     
-})
+// })
 
 
 
-function processArray(arr) {
-  console.log("Original array:", arr);
+// function processArray(arr) {
+//   console.log("Original array:", arr);
 
-  arr.sort((a, b) => a - b);
-  console.log("Sorted array in ascending order:", arr);
+//   arr.sort((a, b) => a - b);
+//   console.log("Sorted array in ascending order:", arr);
 
-  const reversedArray = [...arr].reverse();
-  console.log("Reversed sorted array:", reversedArray);
+//   const reversedArray = [...arr].reverse();
+//   console.log("Reversed sorted array:", reversedArray);
 
-  const maxValue = Math.max(...arr);
-  console.log("Maximum value in the array:", maxValue);
+//   const maxValue = Math.max(...arr);
+//   console.log("Maximum value in the array:", maxValue);
 
-  const minValue = Math.min(...arr);
-  console.log("Minimum value in the array:", minValue);
+//   const minValue = Math.min(...arr);
+//   console.log("Minimum value in the array:", minValue);
 
-  const sortedCopy = [...arr];
-  console.log("Sorted copy of the original array:", sortedCopy);
+//   const sortedCopy = [...arr];
+//   console.log("Sorted copy of the original array:", sortedCopy);
 
-  return {
-      originalArray: arr,
-      sortedArray: arr,
-      reversedArray: reversedArray,
-      maxValue: maxValue,
-      minValue: minValue,
-      sortedCopy: sortedCopy
-  };
-}
+//   return {
+//       originalArray: arr,
+//       sortedArray: arr,
+//       reversedArray: reversedArray,
+//       maxValue: maxValue,
+//       minValue: minValue,
+//       sortedCopy: sortedCopy
+//   };
+// }
 
-const arr = [3, 1, 4, 1, 5, 9, 2, 6, 5];
-console.log(processArray(arr));
+// const arr = [3, 1, 4, 1, 5, 9, 2, 6, 5];
+// console.log(processArray(arr));
+
+
+
+// const newObj={
+//     "first-name":"sidhu",
+//     city:"Bhopal",
+//     age:{
+//         teenagee:true,
+//     }
+
+// }
+
+// console.log(newObj?.City);
+
+
+// let obj={
+//     name:"masoom sharma",
+//     age:34,
+//     addresss:{
+//         city:"haryana"
+//     }
+// }
+
+// let {city}=obj.addresss
+// let {age}=obj
+
+// console.log(city);
+// console.log(age);
+
+// const newObj={
+//     "first-name":"sidhu",
+//     city:"Bhopal",
+//     age:{
+//         teenagee:true,
+//     }
+// }
+
+// let {"first-name" :firstName}=newObj
+// console.log(firstName);
+
+
+// const dataOfCompnay={
+//     owner:"sidhu moosewala",
+//     salary:"56k",
+//     hobby:"singing",
+//     address:{
+//         city:"panjab"
+//     }
+// }
+
+// Object.entries(dataOfCompnay).forEach((val)=>{
+//     console.log(val[0]+' : '+ val[1]);
+    
+// })
+
+
+// shallow copy
+// const singer={...dataOfCompnay}
+// console.log(singer);
+// singer.address.city="haryana"
+// console.log(dataOfCompnay);
+
+
+// deep clone 
+
+// const singer=JSON.parse(JSON.stringify(dataOfCompnay))
+// console.log(singer);
+// singer.address.city="haryana"
+// console.log(singer);
+// console.log(dataOfCompnay);
+
+

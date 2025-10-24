@@ -1396,3 +1396,286 @@ obj?.property // prevents runtime error if obj undefined
 
 ---
 
+# 🏛️ JavaScript Classes & OOP
+
+## 🧠 What is OOP in JS?
+
+Object-Oriented Programming (OOP) is a design paradigm that models code using **objects** which combine **state (data)** and **behavior (methods)**. JavaScript is **prototype-based**, but since ES6 it provides `class` syntax as **syntactic sugar** over prototypes.
+
+---
+
+## 🔹 Class Syntax (ES6)
+
+```js
+class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  greet() {
+    return `Hi, I'm ${this.name}`;
+  }
+}
+
+const p = new Person('Jatin', 22);
+console.log(p.greet()); // Hi, I'm Jatin
+```
+
+* `class` creates a constructor function and sets methods on `prototype`.
+* Classes are **not hoisted** like function declarations.
+
+---
+
+## 🔹 Constructor
+
+* `constructor()` runs when `new` is used.
+* If you don’t define one, a default constructor is created.
+* `new` does these steps: create object → set prototype → bind `this` → run constructor → return object.
+
+```js
+class A {}
+new A(); // calls default constructor
+```
+
+---
+
+## 🔹 Instance Methods vs Static Methods
+
+* **Instance methods** are on the prototype and accessed via instances.
+* **Static methods** are on the class (constructor) itself and accessed via `ClassName.method()`.
+
+```js
+class MathUtil {
+  static square(x) { return x * x; }
+}
+console.log(MathUtil.square(3)); // 9
+```
+
+---
+
+## 🔹 Fields (Class Properties)
+
+* Public instance fields (class fields proposal):
+
+```js
+class Point {
+  x = 0; // public instance field
+  constructor(x, y) { this.x = x; this.y = y; }
+}
+```
+
+* Static fields:
+
+```js
+class C { static version = 1; }
+```
+
+---
+
+## 🔹 Private Fields & Methods (Modern JS)
+
+* Use `#` to declare private fields/methods — accessible only inside the class body.
+
+```js
+class Counter {
+  #count = 0; // private
+  increment() { this.#count++; }
+  get() { return this.#count; }
+}
+```
+
+* Private fields are enforced by language (not just convention).
+
+---
+
+## 🔹 Getters & Setters
+
+Provide controlled access to internal data.
+
+```js
+class Person {
+  constructor(name) { this._name = name; }
+  get name() { return this._name; }
+  set name(v) { this._name = v.trim(); }
+}
+```
+
+---
+
+## 🔹 Inheritance (`extends` + `super`)
+
+Create class hierarchies. `super()` calls the parent constructor; `super.method()` calls parent method.
+
+```js
+class Animal { constructor(name){ this.name = name; } speak(){ return `${this.name} makes sound`; } }
+class Dog extends Animal {
+  constructor(name, breed){ super(name); this.breed = breed; }
+  speak(){ return `${this.name} barks`; }
+}
+```
+
+* Use `super(...)` **before** using `this` in subclass constructor.
+
+---
+
+## 🔹 Prototype vs Class — the Real Deal
+
+* `class` is syntax sugar: methods defined in class are added to `Class.prototype`.
+* Prototype chain: `instance.__proto__ === Class.prototype` and `Class.prototype.__proto__ === Object.prototype`.
+* You can still manipulate prototypes manually (`Object.setPrototypeOf`, `Object.create`).
+
+---
+
+## 🔹 Instance vs Prototype Properties
+
+```js
+class A { method(){} }
+A.prototype.shared = true; // prototype property
+let a = new A();
+a.own = 1; // own (instance) property
+```
+
+* Instance properties live on the object; prototype properties are shared across instances.
+
+---
+
+## 🔹 Polymorphism & Method Overriding
+
+* Subclass can override parent methods (polymorphism).
+* You can call parent method with `super.method()`.
+
+---
+
+## 🔹 Encapsulation Techniques
+
+1. **Private fields (`#`)** — best modern approach.
+2. **Closures / IIFE** — older pattern for privacy.
+3. **WeakMap trick** — private data stored in WeakMap keyed by instance.
+4. **Convention**: prefix `_` (not enforced).
+
+---
+
+## 🔹 Composition vs Inheritance
+
+* Favor **composition** (objects use other objects) over deep inheritance trees. Composition keeps code flexible and testable.
+* Use inheritance when there is a clear “is-a” relationship.
+
+---
+
+## 🔹 Mixins (Multiple Behavior Reuse)
+
+Simple mixin example using object assign:
+
+```js
+const canEat = { eat(){ return 'eating'; } };
+const canWalk = { walk(){ return 'walking'; } };
+class Person {}
+Object.assign(Person.prototype, canEat, canWalk);
+```
+
+---
+
+## 🔹 Class Expressions
+
+Classes can be anonymous or named expressions.
+
+```js
+const MyClass = class { constructor(x){ this.x = x; } };
+```
+
+---
+
+## 🔹 `instanceof` and `constructor`
+
+* `obj instanceof Class` checks prototype chain.
+* `obj.constructor` references the function that constructed the instance (may be altered).
+
+---
+
+## 🔹 New.target
+
+Inside constructor, `new.target` identifies whether function was called with `new` and which constructor was used.
+
+```js
+function Foo(){ console.log(new.target); }
+new Foo(); // function Foo
+Foo(); // undefined
+```
+
+---
+
+## 🔹 Error Handling & Validation in Constructors
+
+* Validate args, throw `TypeError` for bad usage.
+* Keep constructors lightweight — heavy work (I/O) should be outside.
+
+---
+
+## 🔹 Performance Notes
+
+* Methods on prototype share memory; defining methods inside constructor creates duplicate functions per instance (wasteful).
+* Use prototype / class-method style for functions shared between instances.
+
+---
+
+## 🔹 Patterns & Best Practices
+
+* Prefer **class** for modeling data + behavior, but remember it’s syntactic sugar.
+* Avoid heavy inheritance: prefer composition.
+* Use private fields for true encapsulation.
+* Keep constructors minimal; use factory methods for complex creation.
+* Prefer `static` for utility methods not tied to instance state.
+
+---
+
+## 🔹 Advanced Topics (brief)
+
+* **Subclassing built-ins**: `class MyArray extends Array {}` — be careful (behavior differences).
+* **Serializable classes**: implement `toJSON()` to customize JSON.stringify.
+* **Decorators** (TC39 stage) — experimental.
+
+
+
+---
+
+## 🧾 Cheat Sheet (Quick Syntax)
+
+```js
+class A {
+  static s = 1;        // static field
+  #priv = 0;           // private field
+  constructor(x){ this.x = x; }
+  get val(){ return this.x; }
+  set val(v){ this.x = v; }
+  method(){ }
+  static util(){ }
+}
+```
+
+---
+*  we can set prototype using `__proto__`. What is a Prototype?
+Every JavaScript object has a hidden property called [[Prototype]] (can be accessed using . __proto__),
+which acts as a link to another object — the prototype.
+
+It helps JavaScript achieve inheritance — objects can borrow properties or methods from others.
+
+```
+const person = {
+  greet() {
+    console.log("Hello!");
+  }
+};
+
+const user = {
+  name: "Jatin"
+};
+
+user.__proto__ = person;
+
+user.greet(); // Hello! (inherited from person)
+```
+
+- if object and prototype have same method then object method will be used 
+
+
