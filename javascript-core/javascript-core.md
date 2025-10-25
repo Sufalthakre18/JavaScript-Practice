@@ -1679,3 +1679,68 @@ user.greet(); // Hello! (inherited from person)
 - if object and prototype have same method then object method will be used 
 
 
+### 🔒 Encapsulation
+
+* Means **hiding data** and controlling access to it.
+* Done using **private fields (#)** or closure functions.
+* Example:
+
+  ```js
+  class Car {
+    #speed = 0;
+    accelerate() { this.#speed += 10; }
+    getSpeed() { return this.#speed; }
+  }
+  ```
+* Protects data from being changed directly.
+
+### 🔁 Polymorphism
+
+* Means **same method, different behavior**.
+* Achieved using **method overriding** in subclasses.
+* Example:
+
+  ```js
+  class Animal { speak() { console.log("Some sound"); } }
+  class Dog extends Animal { speak() { console.log("Woof!"); } }
+  class Cat extends Animal { speak() { console.log("Meow!"); } }
+  ```
+* Calling `speak()` on different objects gives different results.
+
+### 🧬 Inheritance
+
+* Allows one class to **use properties and methods** of another.
+* Uses the `extends` keyword.
+* Example:
+
+  ```js
+  class Vehicle { start() { console.log("Starting..."); } }
+  class Car extends Vehicle { drive() { console.log("Driving..."); } }
+  ```
+* `Car` can use both `start()` and `drive()`.
+
+### 🧩 Abstraction
+
+* Means **showing only essential features** and hiding complex details.
+* Done using **methods** and **classes** that simplify use.
+* Example:
+
+  ```js
+  class CoffeeMachine {
+    start() { console.log("Starting..."); }
+    brew() { console.log("Brewing coffee..."); }
+  }
+  ```
+* You don’t need to know *how* it brews — just call `brew()`.
+
+---
+
+**Summary Table:**
+
+| Concept       | Meaning                         | Example                 |
+| ------------- | ------------------------------- | ----------------------- |
+| Encapsulation | Hide data & control access      | Private fields `#speed` |
+| Inheritance   | Reuse code from parent class    | `extends` keyword       |
+| Polymorphism  | Same method, different behavior | `speak()` in Dog/Cat    |
+| Abstraction   | Show only important parts       | Simplified methods      |
+
