@@ -1087,7 +1087,7 @@ arr = new Array(23); // Creates an array with length 23 (empty slots)
 
 ## 🧠 What is an Object?
 
-An **object** is a collection of **key-value pairs** used to store related data and functions.
+An **object** is a collection of **key-value pairs** used to store related data and functions. and it is composite datatype
 
 ### ✅ Example
 
@@ -1744,3 +1744,6 @@ user.greet(); // Hello! (inherited from person)
 | Polymorphism  | Same method, different behavior | `speak()` in Dog/Cat    |
 | Abstraction   | Show only important parts       | Simplified methods      |
 
+
+- In function, this keyword points to global object,but in strict mode, this keyword becomes undefined.
+- this keyword inside object's method points to that object.
