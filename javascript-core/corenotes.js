@@ -239,3 +239,103 @@
 // console.log(dataOfCompnay);
 
 
+
+// ----------------
+
+
+// const user={
+//     firstName:"Sufal",
+//     lastName:"Thakre",
+//     printFullName:function(){
+//         console.log(`My name is ${this.firstName} ${this.lastName} and my age is `);
+        
+//     }
+// }
+
+// user.printFullName()
+
+// const user2={
+//     firstName:"Andrew",
+//     lastName:"Tate",
+// }
+
+// user.printFullName.call(user2,45)
+
+
+
+// const user = {
+//     firstName: "Sufal",
+//     lastName: "Thakre",
+// }
+
+
+// let printFullName = function (age,color) {
+//     console.log(`My name is ${this.firstName} ${this.lastName} and my age is ${age}`);
+//     console.log(`My favorite color is ${color}`);
+    
+
+// }
+
+// printFullName.call(user,22,"rose")
+
+// const user2 = {
+//     firstName: "Andrew",
+//     lastName: "Tate",
+// }
+
+// printFullName.call(user2,39,"pink")
+
+
+
+// const user = {
+//     firstName: "Sufal",
+//     lastName: "Thakre",
+// }
+
+
+// let printFullName = function (age,color) {
+//     console.log(`My name is ${this.firstName} ${this.lastName} and my age is ${age}`);
+//     console.log(`My favorite color is ${color}`);
+    
+
+// }
+
+// printFullName.apply(user,[22,"rose"])
+
+// const user2 = {
+//     firstName: "Andrew",
+//     lastName: "Tate",
+// }
+
+// printFullName.apply(user2,[39,"pink"])
+
+
+
+// const user = {
+//     firstName: "Sufal",
+//     lastName: "Thakre",
+// }
+
+
+// let printFullName = function (age,color) {
+//     console.log(`My name is ${this.firstName} ${this.lastName} and my age is ${age}`);
+//     console.log(`My favorite color is ${color}`);
+    
+
+// }
+
+// const printName=printFullName.bind(user,22,"rose")
+// console.log(printName);
+// printName()
+
+
+// const user2 = {
+//     firstName: "Andrew",
+//     lastName: "Tate",
+// }
+
+// let printName2=printFullName.bind(user2,39,"pink")
+// printName2()
+
+// arrow functions does not have their own this, it retains the value of this of enclosing lexical context
+
