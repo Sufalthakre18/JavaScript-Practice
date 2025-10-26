@@ -377,3 +377,40 @@
 
 // console.log(arr.__proto__.__proto__.__proto__);
 // In JavaScript, when an object does not have a particular property, the JavaScript engine looks for the property next in the prototype chain of the object. This process continues recursively until the property is found or until the end of the prototype chain is reached. If the property is not found in the prototype chain, then the property is considered undefined for that object.
+
+// shadowing properties
+// mydate=new Date()
+// console.log(mydate.getFullYear());
+
+// mydate.getFullYear=()=>{console.log("this is my getfullyear");
+// }
+
+// mydate.getFullYear()
+
+// // prototype inheritance
+// const parent={
+//     a:10,
+//     b:20,
+//     sum:function () {
+//         console.log(this.a+this.b);
+        
+//     }
+// }
+
+// const child={
+//     a:40,
+//     c:30,
+//     d:20,
+//     mul:function(){
+//         console.log(this.c*this.d);
+        
+//     }
+// }
+
+
+// child.__proto__=parent
+
+// child.sum()
+// console.log(child.a);
+// child.mul()
+ 
