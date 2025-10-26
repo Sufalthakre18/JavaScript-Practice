@@ -1747,3 +1747,49 @@ user.greet(); // Hello! (inherited from person)
 
 - In function, this keyword points to global object,but in strict mode, this keyword becomes undefined.
 - this keyword inside object's method points to that object.
+
+## ⚙️ `call()`, `apply()`, and `bind()` — Short Notes
+
+### 🧩 call()
+
+* Calls the function **immediately**.
+* Lets you set `this` and pass **arguments one by one**.
+* Example:
+
+  ```js
+  func.call(thisArg, arg1, arg2);
+  ```
+* ✅ Immediate execution.
+
+### 🧩 apply()
+
+* Similar to `call()`, but takes **arguments as an array**.
+* Example:
+
+  ```js
+  func.apply(thisArg, [arg1, arg2]);
+  ```
+* ✅ Immediate execution with array args.
+
+### 🧩 bind()
+
+* Does **not call immediately**.
+* Returns a **new function** with `this` permanently set.
+* Example:
+
+  ```js
+  const newFunc = func.bind(thisArg, arg1, arg2);
+  newFunc();
+  ```
+* ❌ Doesn’t run right away; can be reused.
+
+---
+
+### 🧠 Quick Comparison
+
+| Method      | Calls Immediately? | Arguments Format | Returns What    | Use Case                      |
+| ----------- | ------------------ | ---------------- | --------------- | ----------------------------- |
+| **call()**  | ✅ Yes              | Comma-separated  | Function result | Quick call with custom `this` |
+| **apply()** | ✅ Yes              | Array            | Function result | Use when args are in array    |
+| **bind()**  | ❌ No               | Comma-separated  | New function    | Reuse with fixed `this`       |
+
