@@ -339,3 +339,41 @@
 
 // arrow functions does not have their own this, it retains the value of this of enclosing lexical context
 
+// const obj={
+//     x:45,
+//     y:()=>{
+//         console.log("it points global scope");
+        
+//         console.log(this);
+        
+//     }
+// }
+// const obj={
+//     x:45,
+//     z:function(){
+//         console.log(this);
+        
+//         const y=()=>{
+//         console.log("it points object scope");
+//         console.log(this);
+        
+//     }
+//     y()
+//     }
+// }
+
+// obj.z()
+
+
+// every js object has a special property attached to it which is called as prototype
+
+// prototype chainning
+// mydate =new Date()
+// mydate--->Date.prototype--->Object.prototype--->null
+
+// const arr=[3,56,63,64,2]
+// console.log(Object.getPrototypeOf(arr));
+// console.log(arr.__proto__);
+
+// console.log(arr.__proto__.__proto__.__proto__);
+// In JavaScript, when an object does not have a particular property, the JavaScript engine looks for the property next in the prototype chain of the object. This process continues recursively until the property is found or until the end of the prototype chain is reached. If the property is not found in the prototype chain, then the property is considered undefined for that object.
