@@ -1793,3 +1793,7 @@ user.greet(); // Hello! (inherited from person)
 | **apply()** | ✅ Yes              | Array            | Function result | Use when args are in array    |
 | **bind()**  | ❌ No               | Comma-separated  | New function    | Reuse with fixed `this`       |
 
+- arrow functions does not have their own this, it retains the value of this of enclosing lexical context
+
+
+
