@@ -60,3 +60,24 @@
 
 // --------------------------------
 
+// let el= document.querySelector('.mag')
+// let el= document.querySelector('#mag')
+// let el= document.querySelector('h1')
+// el.style.color='blue'
+
+// --------------------------
+
+// let li=document.querySelectorAll('li')
+// li.forEach((val)=>{
+//     console.log(val.textContent);
+    
+// })
+ 
+// for(let i=0;i<li.length;i++){
+//     console.log(li[i].innerText);
+    
+// }
+
+// ----------------
+
+
