@@ -80,4 +80,83 @@
 
 // ----------------
 
+// let h1=document.querySelector('h1')
+// h1.setAttribute('title',"GODs slogan")
 
+// let div=document.querySelector('div')
+// let img=document.createElement('img')
+// img.setAttribute('src','https://eminem.news/wp-content/uploads/2020/12/epro-news-235.jpg')
+// div.prepend(img)
+
+// img.classList.add('place')
+
+// -----------------------
+
+// let li=document.querySelectorAll('ul li:nth-child(2n)')
+// li.forEach((el)=>{
+//     el.style.color='pink'
+//     el.classList.add('mag')
+// })
+
+// -----------------------
+// CLICK LISTENER
+// event and eventlistener
+// Element.addEventListener("event name",function(){})
+
+// let h1= document.querySelector('h1')
+
+// function dbclick(){
+//     h1.style.backgroundColor='pink'
+// }
+// h1.addEventListener('dbclick',dbclick)
+
+// YOU CAN NOT MEMORIZE WHOLE EVENTLISTENER SO YOU NEED TO DO GPT BECAUSE THERE ARE LOT OF EVENT LISTENER
+
+// ---------------------
+// INPUT LISTENER
+// let inp= document.querySelector('input')
+
+// inp.addEventListener('input',function(detls){
+//     console.log(detls);
+    
+// })
+
+// inp.addEventListener('input',function(detls){
+//     console.log(detls.data);
+    
+// })
+// inp.addEventListener('input',function(detls){
+//     if(detls.data!==null) console.log(detls.data);
+    
+// })
+// --------------------
+
+// let h1= document.querySelector('h1')
+// let select=document.querySelector('select')
+// select.addEventListener('change',(detls)=>{
+//     let car=detls.target.value
+//     h1.textContent=`${car.toUpperCase()} car selected`
+    
+// })
+
+// -------------------------
+
+function getRandomColor() {
+  const letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
+
+h1=document.querySelector('h1')
+window.addEventListener('keydown',(detls)=>{
+    if(detls.key===' ') h1.textContent='SPC'
+    else h1.textContent=detls.key
+    h1.style.color=`${getRandomColor()}`
+    
+    
+    
+})

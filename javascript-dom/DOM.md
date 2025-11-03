@@ -367,4 +367,254 @@ function firstVisible(el){
 * Use `performance.now()` before/after, or use DevTools Performance profiler to record rendering and scripting time.
 
 ---
+* notes
+``` 
+textContent → Gets all text (even hidden), faster, no reflow.
+
+innerText → Gets only visible text, slower, causes reflow.
+✅ Use textContent for better performance.
+ ```
+------------------------------------
+# JavaScript Events & Event Listeners
+
+---
+
+## 🚀 1. What is an Event?
+
+An **event** is an action that happens in the browser — like clicking a button, typing in an input, scrolling, or submitting a form.
+
+> Think of an event as a *signal* that something occurred, and JavaScript can respond to it.
+
+**Common event types:**
+
+* Mouse: `click`, `dblclick`, `mouseover`, `mouseout`
+* Keyboard: `keydown`, `keyup`, `keypress`
+* Form: `submit`, `change`, `input`, `focus`, `blur`
+* Window: `load`, `resize`, `scroll`
+
+---
+
+## ⚙️ 2. What is an Event Listener?
+
+An **event listener** is a function that waits for a specific event to happen and runs when it does.
+
+### ✅ Syntax
+
+```js
+element.addEventListener(eventType, callback, options);
+```
+
+### ✅ Example
+
+```js
+const btn = document.querySelector('button');
+
+btn.addEventListener('click', function() {
+  alert('Button clicked!');
+});
+```
+
+Here:
+
+* `eventType` → event name (e.g., `click`)
+* `callback` → function to execute when event fires
+* `options` → optional settings (capture, once, passive)
+
+---
+
+## 🧩 3. The Event Object
+
+When an event occurs, the browser sends an **event object** with useful details.
+
+```js
+btn.addEventListener('click', function(event) {
+  console.log(event.type); // 'click'
+  console.log(event.target); // element that triggered event
+});
+```
+
+**Common properties:**
+
+| Property             | Description                           |
+| -------------------- | ------------------------------------- |
+| `type`               | Event type (`click`, `keydown`, etc.) |
+| `target`             | Element where event started           |
+| `currentTarget`      | Element currently handling event      |
+| `preventDefault()`   | Stops default browser action          |
+| `stopPropagation()`  | Stops event from bubbling             |
+| `clientX`, `clientY` | Mouse pointer coordinates             |
+
+---
+
+## 🌊 4. Event Flow (Phases)
+
+Events go through 3 phases:
+
+1. **Capturing phase:** event moves from root → target
+2. **Target phase:** event hits the target element
+3. **Bubbling phase:** event bubbles from target → root
+
+```js
+div.addEventListener('click', fn, true); // capture phase
+div.addEventListener('click', fn, false); // bubble phase (default)
+```
+
+**Default:** Bubbling phase.
+
+---
+
+## ⚡ 5. Options in addEventListener()
+
+You can pass an **options object**:
+
+```js
+el.addEventListener('click', handler, {
+  once: true,
+  passive: true,
+  capture: false
+});
+```
+
+| Option    | Meaning                                        |
+| --------- | ---------------------------------------------- |
+| `once`    | Runs listener only once                        |
+| `passive` | Improves performance (used for scroll/touch)   |
+| `capture` | Listens in capturing phase instead of bubbling |
+
+---
+
+## 🔄 6. Removing Event Listeners
+
+Use `removeEventListener()` with the *same function reference*:
+
+```js
+function greet() {
+  console.log('Hi!');
+}
+
+btn.addEventListener('click', greet);
+btn.removeEventListener('click', greet); // removes listener
+```
+
+> You cannot remove anonymous listeners because you can’t reference them later.
+
+---
+
+## 🎯 7. Event Delegation (Pro Tip)
+
+Instead of adding listeners to multiple children, attach **one** to a parent and use `event.target` to check which child triggered it.
+
+```js
+document.querySelector('ul').addEventListener('click', (e) => {
+  const li = e.target.closest('li');
+  if (!li) return;
+  console.log('Clicked:', li.textContent);
+});
+```
+
+✅ Efficient
+✅ Works for dynamically added elements
+✅ Saves memory
+
+---
+
+## 💡 8. Prevent Default Behavior
+
+Some events (like links or form submits) have default actions. Stop them with `preventDefault()`.
+
+```js
+form.addEventListener('submit', (e) => {
+  e.preventDefault(); // stops form submission
+  console.log('Form handled with JS');
+});
+```
+
+---
+
+## 🧠 9. Common Interview Q&A
+
+| Question                           | Answer                                                               |
+| ---------------------------------- | -------------------------------------------------------------------- |
+| `onclick` vs `addEventListener`    | `onclick` replaces old handlers; `addEventListener` allows multiple. |
+| Multiple listeners on one element? | Yes, possible with `addEventListener`.                               |
+| What is event bubbling?            | Event travels upward from child to parent.                           |
+| How to stop bubbling?              | Use `event.stopPropagation()`.                                       |
+| Make listener run once?            | `{ once: true }` option.                                             |
+
+---
+
+## 🧩 10. Practice Examples
+
+### Example 1 — Mouse position tracker
+
+```js
+document.body.addEventListener('mousemove', (e) => {
+  console.log(`Mouse: ${e.clientX}, ${e.clientY}`);
+});
+```
+
+### Example 2 — Input typing listener
+
+```js
+const input = document.querySelector('input');
+input.addEventListener('input', (e) => {
+  console.log('Typed:', e.target.value);
+});
+```
+
+### Example 3 — Delegated delete buttons
+
+```js
+const list = document.querySelector('ul');
+list.addEventListener('click', (e) => {
+  if (e.target.matches('.delete')) {
+    e.target.closest('li').remove();
+  }
+});
+```
+
+---
+
+## 📝 11. Quick Summary (Cheat Sheet)
+
+| Task            | Code                                                                   |
+| --------------- | ---------------------------------------------------------------------- |
+| Add listener    | `el.addEventListener('click', fn)`                                     |
+| Remove listener | `el.removeEventListener('click', fn)`                                  |
+| Run once        | `{ once: true }`                                                       |
+| Stop default    | `event.preventDefault()`                                               |
+| Stop bubbling   | `event.stopPropagation()`                                              |
+| Delegate event  | `parent.addEventListener('click', e => e.target.matches('li') && ...)` |
+
+---
+
+In an event listener, the parameter `e` refers to the **event object**, not the HTML element itself.
+
+The actual element that triggered the event is accessed through **`e.target`**.
+
+That’s why using `e.style` ❌ won’t work — because the event object has no `style` property.
+
+✅ Use `e.target.style` to change styles of the clicked element.
+
+### Example
+
+```js
+h1.addEventListener('click', (e) => {
+  e.target.style.backgroundColor = 'pink'; // correct ✅
+});
+```
+
+Or if you already have a reference to the element:
+
+```js
+h1.addEventListener('click', () => {
+  h1.style.backgroundColor = 'pink'; // also correct ✅
+});
+```
+
+**In short:**
+
+> `e` → event object
+> `e.target` → element that triggered the event
+
 
