@@ -16,16 +16,16 @@ body {
 }
 
 /* Main Container Styling */
-main {
+/* main {
     background-color: #ffffff; 
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
     width: 100%;
     max-width: 400px; 
-}
+} */
 
-h2 {
+/* h2 {
     text-align: center;
     color: #333;
     margin-bottom: 25px;
@@ -44,8 +44,8 @@ label {
     font-weight: bold;
     color: #555;
 }
-
-/* Input Styling */
+*/
+/* Input Styling 
 input[type="email"],
 input[type="password"] {
     width: 100%;
@@ -57,22 +57,21 @@ input[type="password"] {
     transition: border-color 0.3s;
 }
 
+*/
 
-
-
+/*
 .error {
     display: block; 
     color: #dc3545; 
     font-size: 14px;
     margin-top: 5px;
-    min-height: 18px; /* Reserve space so the layout doesn't jump */
-}
-
-/* Button Styling */
+    min-height: 18px; /* Reserve space so the layout doesn't jump 
+} 
+/* Button Styling 
 button[type="submit"] {
     width: 100%;
     padding: 12px;
-    background-color: #007bff; /* Blue background */
+    background-color: #007bff; 
     color: white;
     border: none;
     border-radius: 5px;
@@ -89,7 +88,7 @@ button[type="submit"]:active {
     transform: scale(0.99); 
 }
 
-/* Result Message Styling */
+
 #resultMessage {
     margin-top: 20px;
     padding: 10px;
@@ -111,12 +110,100 @@ button[type="submit"]:active {
     }
 }
 
+*/
+
+ .download-container {
+            width: 100%;
+            max-width: 500px;
+            background-color: var(--card-color);
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        h1 {
+            color: var(--text-color);
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        /* Progress Bar Styling */
+        .progress-bar-wrapper {
+            background-color: #e5e7eb; /* Gray 200 */
+            border-radius: 9999px; /* Fully rounded */
+            height: 16px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            position: relative;
+            
+        }
+
+        .progress-filler {
+            height: 100%;
+            width: 0%; /* Start width for your JS */
+            background: blue;
+            border-radius: 9999px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            
+            box-shadow: 0 2px 4px rgba(1, 98, 255, 0.4);
+        }
+
+        .progress-text {
+            color: var(--text-color);
+            font-weight: 700;
+            font-size: 1.125rem;
+            margin-bottom: 20px;
+        }
+        #startButton {
+            padding: 10px 20px;
+            background-color: skyblue;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+            font-weight: 600;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        #cancelButton{
+             padding: 10px 20px;
+            background-color: skyblue;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+            font-weight: 600;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        #startButton:hover {
+            background-color: rgb(14, 159, 217);
+        }
+
+        #startButton:active {
+            transform: scale(0.98);
+        }
+
+        #startButton:disabled {
+            background-color: #9ca3af; /* Gray 400 */
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
 
     </style>
 </head>
 <body>
     <main>
-        <h2>Email and password validator</h2>
+        <!-- <h2>Email and password validator</h2>
         <form action="">
             <div class="form-group">
                 <label for="email">Email:</label>
@@ -131,10 +218,26 @@ button[type="submit"]:active {
 
             <button type="submit">Submit</button>
         </form>
-        <div id="resultMessage"></div>
-    </main>
+        <div id="resultMessage"></div> -->
 
-    <script >
+<!-- -------------------------------------------------- -->
+         <div class="download-container">
+        <h1>File Transfer Status</h1>
+
+        <div class="progress-bar-wrapper">
+            <div id="progressFiller" class="progress-filler"></div>
+        </div>
+
+        <p id="progressText" class="progress-text">0% Complete</p>
+        <p id="progressStatus" class="progress-text">downloading...</p>
+
+           <button id="startButton">Start Download</button>
+           <br><br>
+           <button id="cancelButton">Cancel Download</button>
+    </div>
+    </main>
+    <script src="script1.js"></script>
+    <!-- <script >
         let email=document.querySelector('#email')
         let password=document.querySelector('#password')
         let form=document.querySelector('form')
@@ -169,6 +272,6 @@ button[type="submit"]:active {
             
             
         })
-    </script>
+    </script> -->
 </body>
 </html>
