@@ -461,3 +461,193 @@ setTimeout(tick, 1000);
 * Use debouncing/throttling for high-frequency events.
 
 ---
+# Web Storage & Cookies
+
+Covers `localStorage`, `sessionStorage`, and cookies: what they are, how to use them, security, limits, and best practices.
+
+---
+
+## 1. Quick summary
+
+* **localStorage** — key/value store, persists across tabs and browser restarts, per-origin, survives session, synchronous, ~5–10MB.
+* **sessionStorage** — key/value store, per-tab (or per-window) and per-origin, cleared when tab/window is closed, synchronous.
+* **Cookies** — small key/value pairs sent to server on matching requests (if not `HttpOnly`), size ~4KB; controlled by attributes (`Expires`, `Max-Age`, `Path`, `Domain`, `Secure`, `HttpOnly`, `SameSite`).
+
+Use localStorage for non-sensitive, persistent client data (preferences). Use sessionStorage for temporary per-tab data. Use cookies for small data that must be sent to server (sessions, auth tokens — but prefer HttpOnly, Secure cookies set by server).
+
+---
+
+## 2. localStorage — API & examples
+
+**Basics:**
+
+```js
+localStorage.setItem('theme', 'dark');
+const theme = localStorage.getItem('theme');
+localStorage.removeItem('theme');
+localStorage.clear(); // clears all keys for origin
+```
+
+**Notes:**
+
+* Stores **strings only** → use `JSON.stringify()` / `JSON.parse()` for objects.
+* Synchronous: avoid heavy reads/writes on performance-critical paths.
+* Shared across all tabs/windows for same origin. Use the `storage` event to detect changes in other tabs.
+
+**`storage` event:** fires on other windows (not the same window that made the change).
+
+```js
+window.addEventListener('storage', (e) => {
+  console.log(e.key, e.oldValue, e.newValue, e.url);
+});
+```
+
+---
+
+## 3. sessionStorage — API & behavior
+
+**API identical to localStorage:**
+
+```js
+sessionStorage.setItem('draft', JSON.stringify(data));
+```
+
+**Key differences:**
+
+* Scope: **per tab/window** (a new tab with same URL gets a new sessionStorage).
+* Lifetime: cleared when the tab/window is closed.
+* Use for: per-tab state like unsent form drafts, ephemeral UI state.
+
+---
+
+## 4. Cookies — API, attributes & examples
+
+**Set a simple cookie (JS):**
+
+```js
+document.cookie = 'theme=dark; path=/; max-age=31536000'; // expires in 1 year
+```
+
+**Read cookies (JS):**
+
+```js
+const cookies = document.cookie; // "k1=v1; k2=v2"
+```
+
+**Delete cookie:**
+
+```js
+document.cookie = 'theme=; max-age=0; path=/';
+```
+
+**Important cookie attributes:**
+
+* `Expires=<date>` or `Max-Age=<seconds>` — controls lifetime
+* `Path` — URL path scope (default current path)
+* `Domain` — domain scope (e.g., `.example.com`)
+* `Secure` — only sent over HTTPS
+* `HttpOnly` — inaccessible to JavaScript (prevents XSS reading)
+* `SameSite` — `Strict` | `Lax` | `None` (with `Secure`), controls cross-site sending (CSRF protections)
+
+**Server-set cookies:** Prefer setting cookies from server with `Set-Cookie` header, especially for session/auth tokens with `HttpOnly` and `Secure` flags.
+
+**Cookies are sent automatically** on HTTP requests matching domain/path (unless blocked by SameSite or Secure rules).
+
+---
+
+## 5. Size & limits
+
+* Cookies: typically ~4KB per cookie (name + value + attributes). Browser limits vary on number of cookies per domain.
+* localStorage/sessionStorage: typically ~5–10MB per origin (varies by browser and storage pressure). Do not rely on exact numbers.
+* Exceeding quota throws `QuotaExceededError` — handle it gracefully.
+
+---
+
+## 6. Security considerations
+
+* **Never store sensitive secrets (plain tokens, passwords) in localStorage or sessionStorage** — accessible to JS and vulnerable to XSS.
+* Prefer **HttpOnly, Secure cookies** for session tokens; they’re not readable by JavaScript.
+* Protect against **XSS**: sanitize user content, use Content Security Policy (CSP), avoid inserting untrusted strings into `innerHTML`.
+* Use `SameSite` cookie attribute to reduce CSRF risk.
+
+---
+
+## 7. When to use which
+
+* **localStorage**: user preferences, theme, cached non-sensitive data, feature flags.
+* **sessionStorage**: temporary per-tab data (tab-specific workflows, temp drafts).
+* **cookies**: small data that the server must receive on requests (session ids), server-managed auth tokens (HttpOnly), or tracking (with privacy/legal considerations).
+
+---
+
+## 8. Practical patterns & examples
+
+**storing an object safely:**
+
+```js
+const user = { name: 'Zoe', id: 5 };
+localStorage.setItem('user', JSON.stringify(user));
+const user2 = JSON.parse(localStorage.getItem('user') || '{}');
+```
+
+**try/catch for quota:**
+
+```js
+try {
+  localStorage.setItem('big', bigString);
+} catch (err) {
+  if (err.name === 'QuotaExceededError') {
+    // fallback or cleanup
+  }
+}
+```
+
+**use HttpOnly cookie for session (server):**
+
+```
+Set-Cookie: sessionId=abc123; HttpOnly; Secure; SameSite=Lax; Path=/; Max-Age=3600
+```
+
+**detect changes across tabs:**
+
+```js
+window.addEventListener('storage', (e) => {
+  if (e.key === 'theme') applyTheme(e.newValue);
+});
+```
+
+---
+
+## 9. Common pitfalls
+
+* Assuming `localStorage` is synchronous-free — it blocks the main thread on reads/writes.
+* Trusting storage to persist in all browsers/modes — private/incognito modes may block or have different limits.
+* Storing sensitive info in client-accessible storage (XSS risk).
+* Parsing `document.cookie` incorrectly — cookie string needs splitting and trimming.
+* Forgetting `path`/`domain` when setting/deleting cookies (deleting must match scope).
+
+---
+
+## 10. Quick cheat-sheet
+
+| Feature           | localStorage       | sessionStorage | cookies                       |
+| ----------------- | ------------------ | -------------- | ----------------------------- |
+| Lifetime          | Persistent         | Tab/window     | Depends on Expires/Max-Age    |
+| Scope             | Origin             | Origin + Tab   | Domain & Path                 |
+| Accessible to JS? | Yes                | Yes            | Yes (unless HttpOnly)         |
+| Sent to server?   | No                 | No             | Yes (if domain/path match)    |
+| Size              | ~5–10MB            | ~5–10MB        | ~4KB / cookie                 |
+| Use case          | Preferences, cache | Per-tab state  | Session IDs, server-read data |
+
+---
+
+## 11. Best practices
+
+* Don’t store secrets in local/session storage.
+* Use `JSON.stringify()` / `parse()` for objects.
+* Use server-set HttpOnly cookies for auth.
+* Handle `QuotaExceededError`.
+* Clean up unused keys.
+* Respect user privacy and legal requirements (GDPR, etc.).
+
+---
