@@ -7,8 +7,7 @@
     <style>
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f7f6;
-    display: flex;
+   display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh; 
@@ -110,7 +109,7 @@ button[type="submit"]:active {
     }
 }
 
-*/
+
 
  .download-container {
             width: 100%;
@@ -129,10 +128,10 @@ button[type="submit"]:active {
             font-weight: 700;
         }
 
-        /* Progress Bar Styling */
+         Progress Bar Styling 
         .progress-bar-wrapper {
-            background-color: #e5e7eb; /* Gray 200 */
-            border-radius: 9999px; /* Fully rounded */
+            background-color: #e5e7eb; 
+            border-radius: 9999px;
             height: 16px;
             margin-bottom: 20px;
             overflow: hidden;
@@ -142,7 +141,7 @@ button[type="submit"]:active {
 
         .progress-filler {
             height: 100%;
-            width: 0%; /* Start width for your JS */
+            width: 0%; 
             background: blue;
             border-radius: 9999px;
             position: absolute;
@@ -193,15 +192,52 @@ button[type="submit"]:active {
         }
 
         #startButton:disabled {
-            background-color: #9ca3af; /* Gray 400 */
+            background-color: #9ca3af;
             cursor: not-allowed;
             box-shadow: none;
         }
+        */
 
+    :root{
+        --bg-light: #ffffff;
+        --text-light: #1a1a1a;
+
+        --bg-dark: #1e1e1e;
+        --text-dark: #f5f5f5;
+    }
+        
+    body.light{
+        background-color: var(--bg-light);
+        color: var(--text-light);
+    }
+    body.dark{
+        background-color: var(--bg-dark);
+        color: var(--text-dark);
+    }
+    .container{
+        text-align: center;
+        padding: 50px;
+    }
+    button{
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: white;
+        transition: background-color 0.3s;
+    }
+    body{
+        transition: background-color 0.5s, color 0.5s;
+    }
+    button:hover{
+        background-color: #0056b3;
+    }
 
     </style>
 </head>
-<body>
+<body class="light">
     <main>
         <!-- <h2>Email and password validator</h2>
         <form action="">
@@ -221,7 +257,7 @@ button[type="submit"]:active {
         <div id="resultMessage"></div> -->
 
 <!-- -------------------------------------------------- -->
-         <div class="download-container">
+         <!-- <div class="download-container">
         <h1>File Transfer Status</h1>
 
         <div class="progress-bar-wrapper">
@@ -234,7 +270,18 @@ button[type="submit"]:active {
            <button id="startButton">Start Download</button>
            <br><br>
            <button id="cancelButton">Cancel Download</button>
+    </div> -->
+
+
+    <!-- ------------------------------------------------------------ -->
+
+    <div class="container">
+        <h1>Theme Preference</h1>
+        <button id="toggleTheme">Toggle Theme</button>
     </div>
+
+    
+
     </main>
     <script src="script1.js"></script>
     <!-- <script >

@@ -63,4 +63,78 @@
 
 // ------------------------------------
 
+// localStorage
+
+// localStorage.setItem('name','ram')
+
+// console.log(localStorage.getItem('name'));
+
+// localStorage.removeItem('name')
+
+// localStorage.clear()
+
+
+// sessionStorage
+
+// sessionStorage.setItem('name','ram')
+
+// console.log(sessionStorage.getItem('name'));
+
+// sessionStorage.removeItem('name')
+
+// sessionStorage.clear()
+
+// Cookie- see on browser console
+
+// document.cookie="username=jai shree ram; age=25"
+
+
+// localStorage.setItem('friends',['ram','shyam','mohan'])
+// localStorage.setItem('friends',JSON.stringify(['ram','shyam','mohan']))
+
+// let friends=JSON.parse(localStorage.getItem('friends'))
+// console.log(friends);
+
+
+// --------------------------
+// Theme switcher
+
+// function applyTheme(theme){
+//     document.body.classList.remove('light','dark')
+//     document.body.classList.add(theme)
+// }
+
+// function getSystemTheme(){
+//     return window.matchMedia('(prefers-color-scheme: dark)').matches
+//     ? 'dark'
+//     : 'light'
+// }
+
+// function setIntialTheme(){
+//     const savedTheme=localStorage.getItem('theme')
+//     applyTheme(savedTheme || getSystemTheme())
+// }
+
+// setIntialTheme()
+
+// window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',
+//     ()=>{
+//         if(!localStorage.getItem('theme')){
+//             applyTheme(getSystemTheme())
+//         }
+     
+//     }
+// )
+
+// document.querySelector('button').addEventListener('click',()=>{
+//     const curentTheme=document.body.classList.contains('dark')
+//     ? 'dark'
+//     : 'light'
+
+//     const newTheme=curentTheme==='dark'?'light':'dark'
+//     applyTheme(newTheme)
+//     localStorage.setItem('theme',newTheme)
+// })
+
+// ---------------------------------
 
