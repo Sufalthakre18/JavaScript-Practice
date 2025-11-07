@@ -104,28 +104,121 @@
 // --------------------------------------------
 
 
-let pr =new Promise(function(res,rje){
-    setTimeout(() => {
-        let rn=Math.floor(Math.random()*10)
-        if(rn>5) res("resolved with"+rn);
-        else rje("rejected with"+rn);
-    }, 3000);
-})
+// let pr =new Promise(function(res,rje){
+//     setTimeout(() => {
+//         let rn=Math.floor(Math.random()*10)
+//         if(rn>5) res("resolved with"+rn);
+//         else rje("rejected with"+rn);
+//     }, 3000);
+// })
 
-pr
-.then(function(value){
-    console.log(value);
+// pr
+// .then(function(value){
+//     console.log(value);
     
-})
-.catch(function(error){
-    console.log(error);
+// })
+// .catch(function(error){
+//     console.log(error);
     
-})
-.finally(function(){
-    console.log("Promise is settled");
-})
+// })
+// .finally(function(){
+//     console.log("Promise is settled");
+// })
 
 
-fetch('https://randomuser.me/api/?results=5')
-.then((res)=>res.json())
-.then((data)=>console.log(data.results));
+// fetch('https://randomuser.me/api/?results=5')
+// .then((res)=>res.json())
+// .then((data)=>console.log(data.results));
+
+// ---------------------------
+// The event loop in JavaScript is responsible for managing asynchronous operations, ensuring that they are executed in the correct order and avoiding blocking the main thread.
+
+// The call stack in the event loop keeps track of function calls and their contexts, ensuring that functions are executed in the correct order and that the correct execution context is maintained.
+
+// The Promise.resolve() method is used to add a task to the microtask queue in JavaScript.
+
+// ---------------------------
+
+// function createMessage(username){ 
+
+    
+//     setTimeout(()=>{
+//         const message = `Welcome ${username}`;
+//         return message;
+//     },2000)
+// }
+
+// function displayMessage(message){
+//     console.log(message);
+// }
+
+// const userMessagePromise = createMessage('Chai')
+// displayMessage(userMessagePromise)
+
+
+// TO FIX THE ABOVE PROBLEM OF UNDEFINED MESSAGE WE USE CALLBACKS
+
+// function createMessage(username, callback){ 
+//     console.log("hii");
+    
+//     setTimeout(()=>{
+//         const message = `Welcome ${username}`;
+//         callback(message);
+//     },2000)
+// }
+
+// function displayMessage(message){
+//     console.log(message);
+// }
+
+// createMessage('Chai', displayMessage)
+
+// --------------------------------------------------
+
+// Callback Hell and Pyramid of Doom
+
+// function firstFunction(val,callback){
+//     setTimeout(()=>{
+//        result= val + 1
+//          callback(result)
+//     },1000)
+// }
+
+// function secondFunction(val,callback){
+//     result1= val + 2
+//     callback(result1) 
+// }
+
+// function thirdFunction(val,callback){
+//     result2= val + 3
+//     callback(result2)
+// }
+
+// // function doOperations(){
+// //     let result=0;
+// //     result=firstFunction(result);
+// //     result=secondFunction(result);
+// //     result=thirdFunction(result);
+// //     console.log("result ",result);
+// // }
+// // doOperations()
+
+// // The above code will not work as expected because firstFunction is asynchronous
+// // To fix this we can use Callbacks but it will lead to Callback Hell
+
+// function doOperations(){
+//     firstFunction(0,(result)=>{
+//         secondFunction(result,(result1)=>{
+//             thirdFunction(result1,(result2)=>{
+//                 console.log("result ",result2);
+//             })
+//         })
+//     })
+// }
+
+// doOperations()
+// // To avoid Callback Hell we can use Promises
+// // A callback function in JavaScript is a function passed as an argument to another function, to be executed later, typically after some asynchronous operation has completed.
+// // 
+
+// -------------------------------------------------

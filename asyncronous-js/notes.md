@@ -248,3 +248,184 @@ const posts = await fetch(`/users/${user.id}/posts`).then(r => r.json());
 * Independent errors: `Promise.allSettled([...])`
 
 ---
+
+#  JavaScript Event Loop & Queues 
+
+---
+
+## 🧠 1. What is the Event Loop?
+
+The **Event Loop** controls how JavaScript executes code. Since JS is **single-threaded**, the event loop helps it handle asynchronous tasks efficiently.
+
+It checks:
+
+1. **Call Stack** → runs the code.
+2. **Queues** → waits for new tasks (callbacks, promises, etc.).
+
+---
+
+## 🧩 2. Key Terms
+
+| Term                                 | Meaning                                                                          |
+| ------------------------------------ | -------------------------------------------------------------------------------- |
+| **Call Stack**                       | Current running code (functions executing).                                      |
+| **Macrotask Queue / Callback Queue** | Holds async callbacks like `setTimeout`, `setInterval`, events, fetch responses. |
+| **Microtask Queue**                  | Holds `Promise.then`, `catch`, `finally`, and `queueMicrotask()`.                |
+| **rAF (requestAnimationFrame)**      | Special queue for animations before browser paint.                               |
+
+---
+
+## ⚙️ 3. How the Event Loop Works
+
+1. Run one **macrotask** (like your script or a timeout callback).
+2. When it’s done → **run all microtasks** in order.
+3. Then → render the UI (paint frame).
+4. Repeat forever.
+
+👉 **Microtasks always run before the next macrotask!**
+
+---
+
+## 🧩 4. Example — Callback vs Microtask
+
+```js
+console.log('start');
+setTimeout(() => console.log('timeout'), 0);
+Promise.resolve().then(() => console.log('promise'));
+console.log('end');
+```
+
+**Output:**
+
+```
+start
+end
+promise
+timeout
+```
+
+🪄 `Promise.then` is a **microtask**, so it runs before the `setTimeout` macrotask.
+
+---
+
+## ⚡ 5. Async/Await Example
+
+```js
+console.log('A');
+async function demo() {
+  await null;
+  console.log('B');
+}
+demo();
+console.log('C');
+```
+
+**Output:**
+
+```
+A
+C
+B
+```
+
+Because `await` pauses and resumes as a **microtask**.
+
+---
+
+## 🧮 6. Microtask Queue Details
+
+* Runs **after** each macrotask.
+* Keeps running until **empty**.
+* Can delay rendering if overloaded.
+* Typical examples: Promises, `queueMicrotask()`.
+
+```js
+queueMicrotask(() => console.log('micro'));
+```
+
+---
+
+## 🕐 7. Macrotask Queue (Callback Queue)
+
+Contains:
+
+* `setTimeout`, `setInterval`
+* DOM events (click, keydown)
+* Network callbacks
+* I/O operations
+
+```js
+setTimeout(() => console.log('macro'), 0);
+```
+
+Runs **after** current microtasks finish.
+
+---
+
+## 🌀 8. Rendering & requestAnimationFrame
+
+**rAF** callbacks run right **before paint** (synchronized with screen refresh).
+
+Good for smooth animations:
+
+```js
+function animate() {
+  // update animation frame
+  requestAnimationFrame(animate);
+}
+requestAnimationFrame(animate);
+```
+
+---
+
+## 🔍 9. Simplified Flow
+
+```
+Run script (macrotask)
+→ Execute microtasks
+→ Render (paint)
+→ Next macrotask
+→ Repeat...
+```
+
+---
+
+## 💡 10. Browser vs Node.js
+
+| Environment | Microtasks                      | Notes                                   |
+| ----------- | ------------------------------- | --------------------------------------- |
+| **Browser** | Promises, `queueMicrotask()`    | Standard behavior                       |
+| **Node.js** | Promises + `process.nextTick()` | `nextTick` runs before other microtasks |
+
+---
+
+## 🧠 11. Interview Q&A
+
+**Q:** Which runs first: `setTimeout(..., 0)` or `Promise.then()`?
+**A:** `Promise.then()` (microtask).
+
+**Q:** Can microtasks block UI rendering?
+**A:** Yes, if you keep scheduling new microtasks endlessly.
+
+**Q:** What is `queueMicrotask()` used for?
+**A:** To schedule a small async task that runs before the next macrotask.
+
+---
+
+## 📋 12. Quick Summary Table
+
+| Type          | Examples                         | Runs                            |
+| ------------- | -------------------------------- | ------------------------------- |
+| **Macrotask** | `setTimeout`, events             | One at a time → then microtasks |
+| **Microtask** | `Promise.then`, `queueMicrotask` | After each macrotask            |
+| **rAF**       | `requestAnimationFrame`          | Before next paint               |
+
+---
+-> Asynchronous programming grants a multitasking superpower to code, enabling programs to execute multiple tasks concurrently.
+
+-> It enhances efficiency and responsiveness by allowing programs to perform various operations simultaneously, akin to multitasking in real life
+
+-> Tasks can progress independently without waiting, leading to improved utilization of resources and faster overall execution times
+
+---
+
