@@ -219,6 +219,50 @@
 // doOperations()
 // // To avoid Callback Hell we can use Promises
 // // A callback function in JavaScript is a function passed as an argument to another function, to be executed later, typically after some asynchronous operation has completed.
-// // 
-
+// // Asynchronous programming grants a multitasking superpower to code, enabling programs to execute multiple tasks concurrently.
+// // It enhances efficiency and responsiveness by allowing programs to perform various operations simultaneously, akin to multitasking in real life
+// // Tasks can progress independently without waiting, leading to improved utilization of resources and faster overall execution times
+// // The await keyword is used to pause the execution of an async function until the promise returned by a promise-based function is settled (either resolved or rejected). It allows the code to wait for the promise to be fulfilled and then continue with the execution, effectively making asynchronous code appear synchronous.
 // -------------------------------------------------
+
+// let firstObject = fetch('https://dummyjson.com/products/1')
+//                        .then(response => response.json())
+
+// let secondObject = fetch('https://dummjson.com/users/1')
+//                         .then(response => response.json())
+
+// let thirdObject = fetch('https://dummyjson.com/posts/1')
+//                         .then(response => response.json())                      
+
+// Promise.all([firstObject,secondObject,thirdObject])
+//          .then((values)=>{
+//             for (let value of values){
+//                 console.log(value);
+                
+//             }
+//          })
+//          .catch((err)=>console.log("Error found : ", err))
+
+// Promise.any([firstObject,secondObject,thirdObject])
+//             .then((value)=>{
+//                 console.log(value);
+//             })
+//             .catch((err)=>console.log("Error found : ", err))
+// ---------------------------------------------------
+
+
+// async function fetchUsers(){
+//     try {
+//         let response =await fetch('https://dummyjson.com/users/2')
+//         let data =await response.json()
+//         console.log(data);
+        
+//     } catch (error) {
+//         console.log("Error ",error);
+        
+//     }
+// }
+
+// fetchUsers()
+
+// ------------------------------------------------------
